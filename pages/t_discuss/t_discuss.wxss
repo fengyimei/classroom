@@ -1,0 +1,39 @@
+/* pages/t_discuss/t_discuss.wxss */
+/* pages/t_expandziliao/t_expandziliao.wxss */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.tasks-item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 20rpx 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border:10rpx dotted greenyellow
+}
+
+.btn-area {
+  padding: 20rpx 10rpx;
+}
+
+.text1{
+  font-weight: bold;
+  display: inline
+}
+
+.text2{
+  display: inline;
+  font-weight:normal
+}
+
+.press{
+  background-color:  rgb(191, 192, 192);
+}
+

@@ -1,0 +1,21 @@
+<!--pages/s_transition/s_transition.wxml-->
+<view class="tasks-list">
+  <view  class="tasks-item"  data-index="{{index}}"  bindlongpress="action_sheet">
+    <view class="t_homework">
+        <text class="text1">作业标题:<text class="text2">{{hTitle}}</text>\n</text>
+        <text class="text1">作业要求:<text class="text2"> {{homework}}</text>\n</text>
+    </view>
+    <view class="s_homework">
+      <text class="text1">作业状态：<text class="text2" style="color:firebrick">{{condition}}</text>\n</text>
+      <text wx:if="{{filename!=''}}" class="text1">作业附加文件名:<text class="text2">{{filename}}</text>\n</text>
+      <text class="text1">我的作业：</text>
+      <text decode="{{true}}" wx:if="{{answer}}!=''">{{answer}}</text>
+    </view>
+       <text wx:if="{{score!=-1}}" class="text1" style="color:red">评分：{{score}}</text>
+       <text wx:if="{{markword!=''}}">老师评语：{{markword}}</text>
+      <text>\n</text>
+     <button formType="submit" type="warn" bindtap='checkfile' wx:if="{{filename!=''}}">查看已上传文件</button>
+     <text>\n</text>
+     <button formType="submit" type="primary" bindtap='buttontap' wx:if="{{overdate==true}}">完成作业</button>
+  </view>
+</view>

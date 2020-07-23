@@ -1,0 +1,28 @@
+/* pages/t_expandziliao/t_expandziliao.wxss */
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.tasks-item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 20rpx 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-style: double;
+  border-color: rgb(60, 127, 228);
+}
+
+.btn-area {
+  padding: 20rpx 10rpx;
+}
+
+.text{
+  display: block;
+}

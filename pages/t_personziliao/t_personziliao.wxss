@@ -1,0 +1,28 @@
+/* pages/t_personziliao/t_personziliao.wxss */
+.ziliao{
+  font-weight: bold;
+}
+
+.text{
+  display: block;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 7rpx 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+  }
+  .section-input {
+    padding: 7rpx 10rpx;
+  }
+  .btn-area {
+    padding: 20rpx 10rpx;
+  }
+
+  .tziliao{
+    border-style: solid;
+    border-color: greenyellow;
+    padding:10rpx
+  }

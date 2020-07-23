@@ -1,0 +1,13 @@
+<!--pages/t_answerdiscuss/t_answerdiscuss.wxml-->
+<text class="ziliao">问题标题：{{discuss[0].hTitle}}</text>
+<view>问题内容:\n{{discuss[0].content}}</view>
+<view>回复内容:\n{{discuss[0].reply}}</view>
+<view>若要更新回复内容，请在此输入</view>
+<form bindsubmit="formSubmit">
+ <view class="section-input">
+        <textarea  name="textarea" placeholder="请在此输入回复内容" auto-height="true" maxlength="-1" value="{{t_reply}}" bindinput="contentChange" />
+  </view>
+  <view class="btn-area">
+    <button formType="submit" type="primary">提交回复</button>
+  </view>
+</form>

@@ -1,0 +1,57 @@
+/* pages/t_mark/t_mark.wxss *//**t_mark.wxss**/
+.pull-right {
+  text-align: right;
+  color: blue;
+  }
+.pull-left {
+  color: red;
+}
+.title {
+height: 20%;
+display: flex;
+flex-direction: column;
+align-items: left;
+padding: 7rpx 10px;
+justify-content: space-between;
+box-sizing: border-box;
+font-weight: bold;
+}
+.body {
+height: 60%;
+display: flex;
+flex-direction: column;
+align-items: left;
+padding: 1rem 0.5rem;
+justify-content: space-between;
+box-sizing: border-box;
+}
+.send {
+height: 10%;
+flex-direction: row;
+align-items: left;
+padding: 10rpx 5rpx;
+justify-content: space-between;
+box-sizing: border-box;
+}
+.send-section {
+display: flex;
+font-weight: bold;
+color: slateblue;
+}
+.input {width: 500rpx;}
+.btn-mini {width:250rpx;}
+
+.answer{
+   border-bottom-style: dotted;
+   border-bottom-color: rgb(251, 255, 2);
+}
+
+.file{
+  border-bottom-style: double;
+  border-bottom-color: rgb(248, 125, 10);
+}
+
+.name{
+  border-bottom-style: dotted;
+  border-bottom-color: rgb(251, 255, 2);
+}

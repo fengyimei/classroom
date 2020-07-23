@@ -1,0 +1,8 @@
+/* pages/t_ziliao/t_ziliao.wxss */
+.container{
+  text-align: center;
+}
+
+.text{
+  display: block;
+}
