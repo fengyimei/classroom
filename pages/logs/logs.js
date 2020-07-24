@@ -61,7 +61,7 @@ Page({
               wx.switchTab({
                 url: '../index/index'
               })
-            },2000)
+            },1500)
           }
       }).catch(res=>{
         wx.showToast({
