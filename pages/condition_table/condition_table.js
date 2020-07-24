@@ -1,4 +1,5 @@
 // pages/condition_table/condition_table.js
+//这是表格展示页面
 Page({
 
   /**
