@@ -1,5 +1,6 @@
 // pages/s_transition/s_transition.js
 const app=getApp()
+const x=''
 Page({
 
   data: {
