@@ -233,6 +233,13 @@ openfile:function(){
     this.setData({
       newcomment:e.detail.value
     })
+    const newitems1=this.data.items
+      newitems1.push({name:'',value:e.detail.value})
+      console.log(e)
+      this.setData({
+        items:newitems1
+        })
+
   },
 
   add:function(e){

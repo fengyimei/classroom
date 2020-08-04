@@ -20,14 +20,17 @@
   <input name="input" name="markscore" value="{{p_score}}"
   bindinput="scoreChange" placeholder="请输入分数" type="text" />
   </view>
-  <text style="font-weight:bold">是否选为优秀作业</text>
-  <radio-group bindchange="radiochange">
-    <radio value='1'>是</radio>
-    <radio value='0' checked="true">否</radio>
-  </radio-group>
-  	<view class="weui-form__control-area">
+  <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">是否选为优秀作业</view>
+                <view class="weui-cell__ft">
+                    <switch bindchange="radiochange" checked />
+                </view>
+  </view>
+  </view>
+  	<view >
+      <text>快捷评语：\n</text>
 			<view class="weui-cells__group weui-cells__group_form">
-        <text>快捷评语：\n</text>
 				<view class="weui-cells weui-cells_checkbox">
                     <checkbox-group bindchange="checkboxChange">
                         <label class="weui-cell weui-cell_active weui-check__label" wx:for="{{items}}" wx:key="name">
@@ -47,15 +50,16 @@
                     </checkbox-group>
 					<a class="weui-cell weui-cell_active weui-cell_link">
             <image src='/images/add.png' mode='widthFix' class="add" bindtap="add"></image>
-            <input value='{{newcomment}}' bindinput="newchange" placeholder="在此添加快捷评语"/>
+            <input value='{{newcomment}}' bindblur="newchange" placeholder="在此添加快捷评语"/>
           	</a>
-				</view>
+				<text >\n</text>
+        </view>
+         <view class="section-input">
+         <text decode="{{true}}">&nbsp; 请输入评语</text>
+         <textarea  name="textarea" placeholder="在此输入评语" style="height:100px" maxlength="-1" value="{{p_markword}}" bindinput="markwordchange"/>
+         </view>
 			</view>
 		</view>
-  <view class="section-input">
-    <text decode="{{true}}">&nbsp; 请输入评语</text>
-    <textarea  name="textarea" placeholder="在此输入评语" style="height:100px" maxlength="-1" value="{{p_markword}}" bindinput="markwordchange"/>
-  </view>
   <view class="send-section">
     <text>\n</text>
     <button class="btn-min" formType="submit" type="primary" >提交</button>
