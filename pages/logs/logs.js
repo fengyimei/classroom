@@ -76,6 +76,13 @@ Page({
        url: '/pages/register/register',
      })
   },
+
+  to_register_teacher:function(){
+      wx.navigateTo({
+        url: '/pages/register_teacher/register_teacher',
+      })
+
+  },
   onLoad: function () {
   
  }

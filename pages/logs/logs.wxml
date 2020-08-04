@@ -10,6 +10,9 @@
         <button type="default" formType="submit" hover-class="other-button-hover"> 登录 </button>
         <text>\n</text>
         <button type="default" formType="reset" hover-class="other-button-hover"> 注册</button>
+        <text>\n\n</text>
+        <button type="default" 
+        bindtap="to_register_teacher" hover-class="other-button-hover"> 注册教师用户（测试用</button>
     </form>
         <!-- <button  href="javascript:;" class="weui_btn weui_btn_plain_primary">测试</button> -->
 </view>

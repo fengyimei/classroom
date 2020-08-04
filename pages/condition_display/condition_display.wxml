@@ -1,0 +1,29 @@
+<!--s_answer.wxml-->
+<view class="task">
+    <view class="item">
+        <text class="title" style="font-weight:bold">截止时间：</text>
+        <text class="details">{{endDate}}</text>
+    </view>
+    <view class="item">
+        <text class="title" style="font-weight:bold">作业标题：</text>
+        <text class="details">{{hTitle}}</text>
+    </view>
+    <view class="item">
+        <text class="title" style="font-weight:bold">作业要求：</text>
+        <text class="details">{{content}}</text>
+    </view>
+</view>
+<view class="status">
+    <view class="list">
+        <text class="title" style="font-weight:bold;font-size:large">本次作业情况：\n</text>
+        <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;提交人数：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{complete_list.length}}\n\n</text></text>
+        
+        <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;未提交人数：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{no_submit}}\n\n</text></text>
+
+        <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;平均分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{avg}}\n\n</text></text>
+
+        <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;最高分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{maxx}}\n\n</text></text>
+
+         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;老师整体评价：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{sum_markword}}\n\n</text></text>
+    </view>
+</view>

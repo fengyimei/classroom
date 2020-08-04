@@ -1,5 +1,4 @@
 <!--t_tasks.wxml-->
-<view wx:if="{{identity}}">
   <view class="tasks-list">
     <block wx:for="{{tasks}}" wx:for-item="task">
       <view  class="tasks-item"  data-index="{{index}}" bindtap="t_students" bindlongpress="action_sheet"  hover-class="press" >
@@ -11,5 +10,5 @@
     </view>
     </block>
   </view>
-</view>
+
 

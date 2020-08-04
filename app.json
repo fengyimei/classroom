@@ -21,7 +21,10 @@
     "pages/t_leisure/t_leisure",
     "pages/exhibition/exhibition",
     "pages/exhibition_students/exhibition_students",
-    "pages/homework_exhibition/homework_exhibition"
+    "pages/homework_exhibition/homework_exhibition",
+    "pages/demo01/demo01",
+    "pages/register_teacher/register_teacher",
+    "pages/condition_display/condition_display"
   ],
   "window":{
     "backgroundTextStyle":"light",

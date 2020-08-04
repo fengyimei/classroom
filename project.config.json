@@ -93,6 +93,14 @@
 					"id": -1,
 					"name": "pages/t_tasks/t_tasks",
 					"pathName": "pages/t_tasks/t_tasks",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/demo01/demo01",
+					"pathName": "pages/demo01/demo01",
+					"query": "",
 					"scene": null
 				}
 			]
