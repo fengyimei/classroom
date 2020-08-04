@@ -55,3 +55,11 @@ color: slateblue;
   border-bottom-style: dotted;
   border-bottom-color: rgb(251, 255, 2);
 }
+
+.substract{
+  width:40rpx
+}
+
+.add{
+  width:50rpx
+}

@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+          t_id:'',
           curid:'',
           hTitle:'',
           curindex:-1,
@@ -14,7 +15,11 @@ Page({
           filepath:'',
           markword:'',
           p_markword:'',
-          is_excellent:'0'
+          is_excellent:'0',
+          items: []  ,
+          newcomment:'',
+          pingyutotal:'',/*总评语 提交后的 */
+          input1:false
   },
   //事件处理函数
   
@@ -25,6 +30,14 @@ Page({
        hTitle:options.hTitle
      })
      const db = wx.cloud.database()
+     db.collection('account_information').where({
+       id:app.globalData.username
+     }).get().then(res=>{
+        this.setData({
+          t_id:res.data[0]._id,
+          items:res.data[0].quick_comment
+        })
+     })
      db.collection('assignment').where({
              _id:this.data.curid
      }).get().then(res => { 
@@ -48,6 +61,27 @@ Page({
          } 
       })
 
+  },
+
+  onHide:function(options){
+      const db=wx.cloud.database()
+      const that=this
+      db.collection('account_information').doc(this.data.t_id).update({
+          data:{
+            quick_comment:that.data.items
+          }
+      })
+  },
+
+  onUnload:function(e){
+
+    const db=wx.cloud.database()
+    const that=this
+    db.collection('account_information').doc(this.data.t_id).update({
+        data:{
+          quick_comment:that.data.items
+        }
+    })
   },
 
   radiochange:function(e){
@@ -182,21 +216,55 @@ openfile:function(){
     })
   }       
 },
-  // 结束任务
-  finish_homework: function(){
+  
+  deleteitem:function(e){
+      const index=e.index
+      var templist=this.data.items.slice()
+      templist.splice(index,1)
+      for(let i=0;i<templist.length;i++){
+        templist[i].name=i
+      }
       this.setData({
-          toast2Hidden: false   // 消息提示框
+        items:templist
       })
+      
+  },
+  newchange:function(e){
+    this.setData({
+      newcomment:e.detail.value
+    })
   },
 
-  // 重启任务
-  restart_homework: function() {
-      this.setData({
-          toast3Hidden: false   // 消息提示框
-      }),
-      console.log('任务重启')
+  add:function(e){
+    if(this.data.newcomment=='' || this.data.newcomment.match(/^\s+$/)){
+      return
+    }
+    var templist=this.data.items.slice()
+    var len=templist.length
+    templist.push(
+      { 
+        name:len,
+        value:this.data.newcomment
+    })
+    this.setData({
+      newcomment:'',
+      items:templist
+    })
   },
 
+  inputs:function()
+  {
+   this.setData({
+   input1:true
+   })
+  },
+
+  checkboxChange: function (e) {
+    console.log('老师的评语模板是：', e.detail.value)
+    this.setData({
+      p_markword:e.detail.value.join(',')
+    })
+  },
 })
 
 // success:function(e){

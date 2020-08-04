@@ -40,12 +40,10 @@ Page({
       var temp=0
       for(let i=0;i<this.data.complete_list.length;i++){
         temp+=parseInt(this.data.complete_list[i].score)
-        console.log(temp)
         if(parseInt(this.data.complete_list[i].score)>maxx){
           maxx=parseInt(this.data.complete_list[i].score)
         }
       }
-      console.log(temp)
       temp=temp/this.data.complete_list.length
       this.setData({
         avg:temp,
