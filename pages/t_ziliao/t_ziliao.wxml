@@ -1,0 +1,14 @@
+<!--pages/t_ziliao/t_ziliao.wxml-->
+<view class="container" bindtap="changetot_person">
+<image src='/images/teacher.jpg' ></image>
+    <text class='text1'>教师资料区</text>
+    <text>\n</text>  
+</view>
+<view class="container" bindtap="changeto_expandziliao">
+<image src='/images/expand.jpg' ></image>
+  <text class='text1' >拓展资料区</text>
+</view>
+  
+
+
+

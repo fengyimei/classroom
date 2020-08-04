@@ -1,0 +1,57 @@
+<view wx:if="{{identity}}">
+  <form bindsubmit="formSubmit">
+  <!-- <scroll-view class="scroll-select">
+      <view class="section-title">选择学生：</view>
+      <checkbox-group name="checkbox">
+        <block wx:for="{{students}}">
+          <view class="section-checkbox">
+          <label><checkbox value="{{item.id}}"/>{{item.name}}</label>
+          </view>
+        </block>
+      </checkbox-group>
+    </scroll-view> -->
+    <view class="section">
+      <view class="section-title">作业标题</view>
+      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange"/>
+      <view class="section-title">作业要求：</view>
+      <view class="section-input">
+          <textarea  name="textarea" placeholder="在此输入要求" auto-height="true" maxlength="-1" value="{{content}}" bindinput="contentChange" />
+      </view>
+    </view>
+    <view class='section-title'>
+        <text class>截止时间</text>
+        <picker class="form-item-picker" mode="date" start="{{nowDate}}" bindchange="onChangeEndDate">{{endDate}}</picker>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" type="primary">布置</button>
+    </view>
+  </form>
+</view>
+
+
+
+<view wx:if="{{!identity}}">
+  <form bindsubmit="formSubmit2">
+  <!-- <scroll-view class="scroll-select">
+      <view class="section-title">选择学生：</view>
+      <checkbox-group name="checkbox">
+        <block wx:for="{{students}}">
+          <view class="section-checkbox">
+          <label><checkbox value="{{item.id}}"/>{{item.name}}</label>
+          </view>
+        </block>
+      </checkbox-group>
+    </scroll-view> -->
+    <view class="section">
+      <view class="section-title">问题标题</view>
+      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange"/>
+      <view class="section-title">问题内容</view>
+      <view class="section-input">
+          <textarea  name="textarea" placeholder="在此输入要求" auto-height="true" maxlength="-1" value="{{content}}" bindinput="contentChange" />
+      </view>
+    </view>
+    <view class="btn-area">
+      <button formType="submit" type="primary">提交</button>
+    </view>
+  </form>
+</view>

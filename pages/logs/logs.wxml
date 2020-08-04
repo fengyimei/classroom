@@ -1,0 +1,18 @@
+<view class="login">
+    <view class="text1">
+    <text>CCNU作业反馈小程序</text>
+    </view> 
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="section">
+            <input name="userName"  type="text" maxlength="15" placeholder="请输入您的姓名" value="{{account}}" bindinput="accountchange"/>
+            <input name="userPassword" type="password"   maxlength="100" placeholder="请输入您的密码" value="{{password}}" bindinput="passwordchange" />
+        </view>
+        <button type="default" formType="submit" hover-class="other-button-hover"> 登录 </button>
+        <text>\n</text>
+        <button type="default" formType="reset" hover-class="other-button-hover"> 注册</button>
+        <text>\n\n</text>
+        <button type="default" 
+        bindtap="to_register_teacher" hover-class="other-button-hover"> 注册教师用户（测试用</button>
+    </form>
+        <!-- <button  href="javascript:;" class="weui_btn weui_btn_plain_primary">测试</button> -->
+</view>

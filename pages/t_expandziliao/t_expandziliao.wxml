@@ -1,0 +1,21 @@
+<!--pages/t_expandziliao/t_expandziliao.wxml-->
+<form bindsubmit="formSubmit">
+    <view wx:if="{{identity=='teacher'}}" class="btn-area">
+    <button formType="submit" type="primary">添加拓展资料</button>
+  </view>
+</form>
+<view class="tasks-list">
+  <block wx:for="{{ziliao}}" wx:for-item="task">
+    <view  class="tasks-item"  data-index="{{index}}"  bindlongpress="action_sheet"  >
+       <text>{{index + 1}}</text>
+       <text>参考资料标题：{{task.hTitle}}</text>
+       <text selectable="true">参考资料内容：</text>
+       <text decode="{{true}}" selectable="true">&nbsp;&nbsp;{{task.content}}</text>
+   </view>
+  </block>
+</view>
+<!-- <action-sheet hidden="{{actionSheetHidden}}" bindchange="actionSheetChange">
+    <action-sheet-item class="item" bindtap="edit_task" data-name="edit">修改</action-sheet-item>
+    <action-sheet-item class="item" bindtap="delete_task" data-name="delete" >删除</action-sheet-item>
+  <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet> -->

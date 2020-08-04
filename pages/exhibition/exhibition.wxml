@@ -1,0 +1,14 @@
+<!--t_tasks.wxml-->
+  <view class="tasks-list">
+    <block wx:for="{{tasks}}" wx:for-item="task">
+      <view  class="tasks-item"  data-index="{{index}}" bindtap="t_students" bindlongpress="action_sheet"  hover-class="press" >
+        <text>{{index + 1}}</text>
+        <text style="font-weight:bold">作业标题：<text style="font-weight:normal">{{task.hTitle}}</text>\n</text> 
+        <text style="font-weight:bold">截止时间：<text style="font-weight:normal">{{task.endDate}}\n</text></text>
+        <text style="font-weight:bold">作业要求：\n</text>
+        <text decode="{{true}}">&nbsp;&nbsp;{{task.content}}</text>
+    </view>
+    </block>
+  </view>
+
+

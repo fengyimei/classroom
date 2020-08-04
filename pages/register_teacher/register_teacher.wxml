@@ -1,0 +1,12 @@
+<!--pages/register/register.wxml-->
+<view class="login">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+        <view class="section">
+            <input name="userName"  type="text" maxlength="15" placeholder="请输入账号名" value="{{account}}" bindinput="accountchange"/>
+            <input  maxlength="100" type="password" placeholder="请输入密码" value="{{password}}" bindinput="passwordchange" />
+            <input maxlength="100" placeholder="确认密码"  type="password"  value="{{passwordagain}}" bindinput="passwordagainchange" />
+            <input  maxlength="100" placeholder="请输入您的手机号码" value="{{phonenumber}}" bindinput="phonenumberchange" />
+        </view>
+        <button type="default" formType="submit" hover-class="other-button-hover"> 注册 </button>
+    </form>
+</view>

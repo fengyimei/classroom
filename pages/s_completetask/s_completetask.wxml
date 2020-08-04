@@ -1,0 +1,21 @@
+<form bindsubmit="formSubmit">
+  <view class="section">
+    <view class="section-title">作业要求：</view>
+    <view>{{content}}</view>
+    <view class="section-title">写作业：</view>
+    <view class="section-input">
+        <textarea  name="textarea" placeholder="在此输入作业内容" auto-height="true" maxlength="-1" value="{{answer}}" bindinput="contentChange" />
+    </view>
+    <view class="section-title">已上传文件名:{{filename}}</view>
+    <button type="primary" bindtap="uploadfile">点击上传文件</button>
+    
+    <view>
+      <block wx:for="{{detailPics}}" wx:key="{{index}}tmpimg">
+      <image src='{{item}}' mode='aspectFill'></image>
+      </block>
+    </view>
+    <view class="btn-area">
+    <button formType="submit" type="primary">提交作业</button>
+    </view>
+  </view>
+</form>

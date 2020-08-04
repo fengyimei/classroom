@@ -1,0 +1,115 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": true,
+		"es6": true,
+		"postcss": true,
+		"preloadBackgroundData": false,
+		"minified": true,
+		"newFeature": true,
+		"coverView": true,
+		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
+		"checkInvalidKey": true,
+		"checkSiteMap": true,
+		"uploadWithSourceMap": true,
+		"compileHotReLoad": false,
+		"babelSetting": {
+			"ignore": [],
+			"disablePlugins": [],
+			"outputPath": ""
+		},
+		"useIsolateContext": true,
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.11.1",
+	"appid": "wxbcf0d422d1c2f2e8",
+	"projectname": "classroom",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": [
+				{
+					"id": -1,
+					"name": "correct",
+					"pathName": "pages/t_mark/t_mark",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "t_assignment",
+					"pathName": "pages/t_assignment/t_assignment",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "expandziliao",
+					"pathName": "pages/t_expandziliao/t_expandziliao",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/logs/logs",
+					"pathName": "pages/index/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/t_tasks/t_tasks",
+					"pathName": "pages/t_tasks/t_tasks",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": 5,
+					"name": "pages/demo01/demo01",
+					"pathName": "pages/demo01/demo01",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/t_mark/t_mark",
+					"pathName": "pages/t_mark/t_mark",
+					"scene": null
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,57 @@
+
+.section-title {
+  font-weight: bold;
+  padding: 10rpx 10rpx;
+}
+.scroll-select {
+height: 70%;
+display: flex;
+flex-direction: column;
+align-items: left;
+padding: 7rpx 10rpx;
+justify-content: space-between;
+box-sizing: border-box;
+}
+.section-checkbox {
+  padding: 7rpx 2rem;
+
+}
+.section {
+display: flex;
+flex-direction: column;
+align-items: left;
+padding: 7rpx 10rpx;
+justify-content: space-between;
+box-sizing: border-box;
+}
+.section-input {
+  padding: 7rpx 10rpx;
+}
+.btn-area {
+  padding: 20rpx 10rpx;
+}
+.form-item-label{
+  font-size: 12pt;
+  color:#333
+}
+
+.form-item-picker{
+  font-size:12pt;
+  color:#999
+}
+
+.textarea1{
+  border: 2rpx solid #000;
+  margin: 30rpx auto;
+  border-radius:10rpx; 
+}
+
+input{
+  border:1px solid #ddd;
+  line-height:80rpx;
+  height:80rpx;
+  width:80%;
+  padding-left:20rpx;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}

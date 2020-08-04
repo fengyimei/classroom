@@ -1,0 +1,12 @@
+<text class="ziliao">教师空闲时间</text>
+<view class="tziliao">
+    <text>{{t_freetime}}</text>
+</view>
+<form bindsubmit="formSubmit">
+ <view wx:if="{{identity=='teacher'}}" class="section-input">
+        <textarea  name="textarea" placeholder="如要修改空闲时间，则在此输入" auto-height="true" maxlength="-1" value="{{t_xiugai}}" bindinput="contentChange" />
+  </view>
+  <view wx:if="{{identity=='teacher'}}"  class="btn-area">
+    <button formType="submit" type="primary">修改资料</button>
+  </view>
+</form>

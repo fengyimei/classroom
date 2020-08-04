@@ -1,0 +1,11 @@
+<!--pages/homework_exhibition/homework_exhibition.wxml-->
+<text style="font-weight:bold">{{name}}的作业\n</text>
+<view class="decoration">
+  <text style="font-weight:bold" decode="true">作业说明:\n</text>
+  <text selectable="true" decode="true">&nbsp;&nbsp;{{answer}}\n</text>
+  <text style="font-weight:bold">老师评语：\n</text>
+  <text decode="true">&nbsp;&nbsp;{{markword}}\n</text>
+  <text style="font-weight:bold">附带文件名:\n</text>
+  <text decode="true">&nbsp;&nbsp;{{filepath==''?'没有文件':filename}}</text>
+  <button wx:if="{{filename!=''}}" type="primary" bindtap="openfile">点击下载文件</button>
+</view>

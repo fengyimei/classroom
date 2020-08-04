@@ -1,0 +1,71 @@
+{
+  "pages":[
+    "pages/logs/logs",
+    "pages/index/index",
+    "pages/t_assignment/t_assignment",
+    "pages/t_tasks/t_tasks",
+    "pages/t_students/t_students",
+    "pages/s_tasks/s_tasks",
+    "pages/t_mark/t_mark",
+    "pages/t_ziliao/t_ziliao",
+    "pages/t_personziliao/t_personziliao",
+    "pages/t_expandziliao/t_expandziliao",
+    "pages/t_addexpandziliao/t_addexpandziliao",
+    "pages/t_discuss/t_discuss",
+    "pages/t_answerdiscuss/t_answerdiscuss",
+    "pages/condition_table/condition_table",
+    "pages/register/register",
+    "pages/s_completetask/s_completetask",
+    "pages/s_transition/s_transition",
+    "pages/s_transition2/s_transition2",
+    "pages/t_leisure/t_leisure",
+    "pages/exhibition/exhibition",
+    "pages/exhibition_students/exhibition_students",
+    "pages/homework_exhibition/homework_exhibition",
+    "pages/demo01/demo01",
+    "pages/register_teacher/register_teacher",
+    "pages/condition_display/condition_display"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "backgroundColor": "#f9f9f9",
+    "borderStyle": "white",
+    "selectedColor": "#00b38b",
+    "color": "#666666",
+    "list": [{
+      "pagePath": "pages/index/index",
+      "text": "教师首页",
+      "iconPath":"icons/home-1.png",
+      "selectedIconPath":"icons/home-2.png"
+    },{
+      "pagePath": "pages/t_assignment/t_assignment",
+      "text": "布置作业",
+      "iconPath":"icons/homework-1.png",
+      "selectedIconPath":"icons/homework-2.png"
+    }, {
+      "pagePath": "pages/t_tasks/t_tasks",
+      "text": "批改作业",
+      "iconPath":"icons/correct-1.png",
+      "selectedIconPath":"icons/correct-2.png"
+    } ,{
+       "pagePath": "pages/condition_table/condition_table",
+        "text": "作业情况",
+        "iconPath":"icons/table-1.png",
+        "selectedIconPath":"icons/table-2.png"
+      }, {
+        "pagePath": "pages/exhibition/exhibition",
+         "text": "优秀作业展示",
+         "iconPath":"icons/exhibition.png",
+         "selectedIconPath":"icons/exhibition2.png"
+       } 
+        ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+  
+}
