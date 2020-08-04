@@ -1,4 +1,7 @@
 <view class="login">
+    <view class="text1">
+    <text>CCNU作业反馈小程序</text>
+    </view> 
     <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="section">
             <input name="userName"  type="text" maxlength="15" placeholder="请输入您的姓名" value="{{account}}" bindinput="accountchange"/>
@@ -8,5 +11,5 @@
         <text>\n</text>
         <button type="default" formType="reset" hover-class="other-button-hover"> 注册</button>
     </form>
-        <button  href="javascript:;" class="weui_btn weui_btn_plain_primary">测试</button>
+        <!-- <button  href="javascript:;" class="weui_btn weui_btn_plain_primary">测试</button> -->
 </view>

@@ -33,3 +33,11 @@ input{
   background-color: greenyellow!important;
   color:#b02923;
 }
+
+.text1{
+  display:flex;
+  justify-content: center;
+  align-content: center;
+  color: rgb(43, 185, 228);
+  margin: 10rpx;
+}

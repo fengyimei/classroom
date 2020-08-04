@@ -9,8 +9,8 @@
     <view  class="tasks-item"  data-index="{{index}}"  bindlongpress="action_sheet"  >
        <text>{{index + 1}}</text>
        <text>参考资料标题：{{task.hTitle}}</text>
-       <text>参考资料内容：</text>
-       <text decode="{{true}}">&nbsp;&nbsp;{{task.content}}</text>
+       <text selectable="true">参考资料内容：</text>
+       <text decode="{{true}}" selectable="true">&nbsp;&nbsp;{{task.content}}</text>
    </view>
   </block>
 </view>

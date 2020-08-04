@@ -15,20 +15,12 @@
 </view>
 <view class="status">
     <view class="list">
-        <text class="title" style="font-weight:bold">已经完成作业的人：</text>
-        <block wx:for="{{complete_list}}" wx:for-item="item">
+        <text class="title" style="font-weight:bold">优秀作业：</text>
+        <block wx:for="{{e_list}}" wx:for-item="item">
             <view class="sname" hover-class="stap" bindtap="t_mark" data-index="{{index}}">
                 <text>{{item.name}}</text>
                 <text decode="{{true}}">&nbsp;&nbsp;{{item.condition}}</text>
             </view>
-        </block>
-    </view>
-    <view class="list">
-        <text class="title">未完成作业的人：</text>
-        <block wx:for="{{uncomplete_list}}">
-             <view class="item" class="sname2" hover-class="stap">
-                 <text> {{item}}</text>
-             </view>
         </block>
     </view>
 </view>

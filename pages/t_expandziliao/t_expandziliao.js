@@ -11,6 +11,9 @@ Page({
   },
 
   action_sheet: function(e){
+    if(app.globalData.identity=='student') {
+      return
+    }
     this.setData({
       //actionSheetHidden: !this.data.actionSheetHidden,
       currentindex:e.currentTarget.dataset.index

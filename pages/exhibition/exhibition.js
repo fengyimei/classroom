@@ -38,7 +38,7 @@ Page({
     const curindex=e.currentTarget.dataset.index
     const curid=this.data.tasks[curindex]._id
     wx.navigateTo({
-      url: '../t_students/t_students?id='+curid
+      url: '../exhibition_students/exhibition_students?id='+curid
     })
   },
 

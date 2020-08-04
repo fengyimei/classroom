@@ -1,0 +1,7 @@
+<!--pages/s_transition2/s_transition2.wxml-->
+<view  bindtap="changetoleisure" class="entrance">
+      <view class="user-motto1">教师空闲时间</view>
+  </view>
+<view  bindtap="changetointroduction" class="entrance" >
+      <text class="user-motto2">教师简介</text>
+</view>

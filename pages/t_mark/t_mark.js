@@ -4,21 +4,25 @@ var app = getApp()
 Page({
   data: {
           curid:'',
+          hTitle:'',
           curindex:-1,
           curname:'',
           answer:'',
           score:-1,
           p_score:-1,
           filename:'',
+          filepath:'',
           markword:'',
-          p_markword:''
+          p_markword:'',
+          is_excellent:'0'
   },
   //事件处理函数
   
   onLoad: function (options) {
      this.setData({
        curid:options.id,
-       curindex:options.index
+       curindex:options.index,
+       hTitle:options.hTitle
      })
      const db = wx.cloud.database()
      db.collection('assignment').where({
@@ -36,13 +40,22 @@ Page({
                answer: res.data[0].complete_list[this.data.curindex].answer,
                score: res.data[0].complete_list[this.data.curindex].score,
                markword: res.data[0].complete_list[this.data.curindex].markword,
-               filename: res.data[0].complete_list[this.data.curindex].filepath
-
+               p_score: res.data[0].complete_list[this.data.curindex].score,
+               p_markword: res.data[0].complete_list[this.data.curindex].markword,
+               filepath: res.data[0].complete_list[this.data.curindex].filepath,
+               filename:res.data[0].complete_list[this.data.curindex].filename
            })
          } 
       })
 
   },
+
+  radiochange:function(e){
+     this.setData({
+       is_excellent:e.detail.value
+     })
+  },
+
   scoreChange:function(e){
     this.setData({
         p_score: e.detail.value
@@ -58,7 +71,7 @@ openfile:function(){
   const that=this
   wx.cloud.downloadFile({
       // 示例 url，并非真实存在
-      fileID: 'cloud://cloudclassroom-3tovs.636c-cloudclassroom-3tovs-1302479370/files/'+that.data.curname+'作业文件.pdf',
+      fileID: that.data.filepath,
       success: function (res) {
               const filePath = res.tempFilePath
               wx.openDocument({
@@ -88,26 +101,59 @@ openfile:function(){
           })
     }
     else{
+      const title=this.data.hTitle
+      const name=this.data.curname
+      const filename=this.data.filename
+      const answer=this.data.answer
+      const markword=this.data.p_markword
+      const path=this.data.filepath
       const id=this.data.curid
       const db = wx.cloud.database()  
       const cont=db.collection('assignment')
       cont.doc(this.data.curid).get().then(res=>{
-        console.log(res.data)
-        let curlist=res.data.complete_list
-        let cur=res.data.complete_list[this.data.curindex]
+        var curlist=res.data.complete_list
+        var cur=res.data.complete_list[this.data.curindex]
+        var e_list=res.data.e_list.slice()
         cur.score=this.data.p_score
         cur.markword=this.data.p_markword
         cur.hascorrected=true
+        cur.condition='老师已批改反馈'
         curlist[this.data.curindex]=cur
+        cur.is_excellent=this.data.is_excellent
+        if(cur.is_excellent=='1'){
+          var i=0
+          for(;i<e_list.length;i++){
+              console.log(name)
+              if(e_list[i].name==name){
+                e_list[i].anwer=answer
+                e_list[i].markword=markword
+                e_list[i].filename=filename
+                e_list[i].filepath=path
+                break
+              }
+          }
+          if(i==e_list.length){
+            var tempobject={
+              name:name,
+              answer:answer,
+              markword:markword,
+              filename:filename,
+              filepath:path,
+            }
+            e_list.push(tempobject)
+          }
+        }
         const cont2=db.collection('assignment')
         cont2.doc(this.data.curid).update({
           data:{
-            complete_list:curlist
+            complete_list:curlist,
+            e_list:e_list
           },
           success:function(res){
             // wx.showToast({
             //   title: '提交成绩成功',
             // })
+           
             var pages = getCurrentPages();  
             var beforepage = pages[pages.length - 2];
             

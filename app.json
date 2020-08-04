@@ -16,7 +16,12 @@
     "pages/condition_table/condition_table",
     "pages/register/register",
     "pages/s_completetask/s_completetask",
-    "pages/s_transition/s_transition"
+    "pages/s_transition/s_transition",
+    "pages/s_transition2/s_transition2",
+    "pages/t_leisure/t_leisure",
+    "pages/exhibition/exhibition",
+    "pages/exhibition_students/exhibition_students",
+    "pages/homework_exhibition/homework_exhibition"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -49,7 +54,13 @@
         "text": "作业情况",
         "iconPath":"icons/table-1.png",
         "selectedIconPath":"icons/table-2.png"
-      } ]
+      }, {
+        "pagePath": "pages/exhibition/exhibition",
+         "text": "优秀作业展示",
+         "iconPath":"icons/exhibition.png",
+         "selectedIconPath":"icons/exhibition2.png"
+       } 
+        ]
   },
   "style": "v2",
   "sitemapLocation": "sitemap.json"

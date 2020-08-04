@@ -1,0 +1,5 @@
+/* pages/homework_exhibition/homework_exhibition.wxss */
+.decoration{
+  border: double yellowgreen;
+  padding:10rpx
+}

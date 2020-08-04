@@ -8,6 +8,8 @@ Page({
      answer:'',
      filepath:'',
      filename:'',
+     issecond:false,
+     condition:'',
      detailPics:[]
   },
 
@@ -83,15 +85,15 @@ Page({
           }
           //tempFilePath可以作为img标签的src属性显示图片
           const tempFilePaths=res.tempFiles[0].path
-          
-          that.setData({
-            filename:app.globalData.username+'作业文件'+'.pdf',
-            filepath:tempFilePaths
-          })
           wx.cloud.uploadFile({
-              cloudPath:'files/'+app.globalData.username+"作业文件"+".pdf",//上传到云端的路径
+              cloudPath:'files/'+app.globalData.username+"作业文件"+".docx",//上传到云端的路径
               filePath:tempFilePaths,//小程序的临时文件路径
               success:res=>{
+                console.log(res)
+                that.setData({
+                  filename:app.globalData.username+'作业文件'+'.docx',
+                  filepath:res.fileID
+                })
                   wx.showToast({
                    title: '上传文件成功',
                    })
@@ -130,12 +132,19 @@ Page({
             })
           }
           else{
-            var complete_list=res.data[0].complete_list
+            var complete_list=res.data[0].complete_list.slice()
             var flag=0
             for(let i in complete_list){
               if(complete_list[i].name==app.globalData.username){
                 flag=1
                 complete_list[i].answer=this.data.answer
+                complete_list[i].hascorrected=false
+                complete_list[i].issecond=true
+                complete_list[i].score=-1
+                complete_list[i].markword=''
+                complete_list[i].condition='已重新提交，未批改'
+                complete_list[i].filepath=this.data.filepath
+                complete_list[i].filename=this.data.filename
                 const temp=db.collection('assignment')
                 temp.doc(res.data[0]._id).update({
                   data:{
@@ -143,7 +152,7 @@ Page({
                   },
                   success:function(res){
                     wx.showToast({
-                      title: '修改作业成功',
+                      title: '重新提交成功',
                     })
                     setTimeout(function(){
                       wx.switchTab({
@@ -193,10 +202,12 @@ Page({
                 score:-1,
                 markword:'',
                 hascorrected:false,
+                condition:'已提交',
                 picpath:that.data.detailPics,
-                filepath:that.data.filepath
+                filepath:that.data.filepath,
+                filename:that.data.filename
               }
-              var complete_list2=res.data[0].complete_list
+              var complete_list2=res.data[0].complete_list.slice()
                 console.log(complete_list2)
                 complete_list2.push(temp2)
                 const temp=db.collection('assignment')

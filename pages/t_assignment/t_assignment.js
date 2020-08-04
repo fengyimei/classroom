@@ -86,6 +86,14 @@ Page({
           title: '成功布置作业',
           icon:'success'
         })  
+        db.collection('excellent').add({
+          data:{
+            hTitle: this.data.hTitle,
+            content:this.data.content,
+            endDate:this.data.endDate,
+            e_list:[]
+          }
+        })
         setTimeout(function(){
           wx.switchTab({
             url: '/pages/t_tasks/t_tasks',
@@ -112,13 +120,13 @@ Page({
   formSubmit2: function(e) {
     if (this.data.hTitle== ""){
         wx.showToast({
-          title: '未输入讨论标题',
+          title: '未输入问题标题',
           icon:'none'
         })
     }
     else if (e.detail.value.textarea == ""){
       wx.showToast({
-        title: '未输入讨论内容',
+        title: '未输入问题内容',
         icon:'none'
       })
   }
@@ -135,7 +143,7 @@ Page({
       }}).then(res=>{
         console.log(res)
         wx.showToast({
-          title: '成功添加讨论',
+          title: '成功添加问题',
           icon:'success'
         })  
         setTimeout(function(){
@@ -151,7 +159,7 @@ Page({
       }).catch(res=>{
         console.log(res)
         wx.showToast({
-          title: '添加讨论失败',
+          title: '添加问题失败',
           icon:'none'
         }) 
         return
@@ -166,7 +174,7 @@ Page({
         identity:false
       })
       wx.setNavigationBarTitle({
-        title: "添加讨论"
+        title: "添加问题"
       })
     }
     else{

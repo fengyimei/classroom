@@ -11,18 +11,23 @@
 <text class="body" wx:if="{{markword!=''}}">批改评语：{{markword}}</text>
 <view class="file">
   <text>是否提交文件：</text>
-  <text style="font-weight:bold">{{filename!=''?"是":"否"}}</text>
-  <view class="send-section" bindtap="openfile" wx:if="{{filename!=''}}">点击此处查看文件</view>
+  <text style="font-weight:bold">{{filepath!=''?"是":"否"}}</text>
+  <view class="send-section" bindtap="openfile" wx:if="{{filepath!=''}}">点击此处查看文件</view>
 </view>
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="title">
   <text>请输入批改后分数</text>
-  <input name="input" name="markscore" value="{{score}}"
+  <input name="input" name="markscore" value="{{p_score}}"
   bindinput="scoreChange" placeholder="请输入分数" type="text" />
   </view>
+  <text style="font-weight:bold">是否选为优秀作业</text>
+  <radio-group bindchange="radiochange">
+    <radio value='1'>是</radio>
+    <radio value='0' checked="true">否</radio>
+  </radio-group>
   <view class="section-input">
     <text decode="{{true}}">&nbsp; 请输入评语</text>
-    <textarea  name="textarea" placeholder="在此输入评语" auto-height="true" maxlength="-1" value="{{markword}}" bindinput="markwordchange"/>
+    <textarea  name="textarea" placeholder="在此输入评语" auto-height="true" maxlength="-1" value="{{p_markword}}" bindinput="markwordchange"/>
   </view>
   <view class="send-section">
     <button class="btn-min" formType="submit" type="primary" >提交</button>

@@ -6,7 +6,6 @@
     <view class="section-input">
         <textarea  name="textarea" placeholder="在此输入作业内容" auto-height="true" maxlength="-1" value="{{answer}}" bindinput="contentChange" />
     </view>
-    <view class="section-title">如要上传文件，请在此处上传：</view>
     <view class="section-title">已上传文件名:{{filename}}</view>
     <button type="primary" bindtap="uploadfile">点击上传文件</button>
     

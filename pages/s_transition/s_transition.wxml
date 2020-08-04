@@ -7,8 +7,7 @@
     </view>
     <view class="s_homework">
       <text class="text1">作业状态：<text class="text2" style="color:firebrick">{{condition}}</text>\n</text>
-      <text wx:if="{{filename!=''}}" class="text1">作业附加文件名:<text class="text2">{{filename}}</text>\n</text>
-      <text class="text1">我的作业：</text>
+      <text class="text1">作业内容：</text>
       <text decode="{{true}}" wx:if="{{answer}}!=''">{{answer}}</text>
     </view>
        <text wx:if="{{score!=-1}}" class="text1" style="color:red">评分：{{score}}</text>
@@ -16,6 +15,6 @@
       <text>\n</text>
      <button formType="submit" type="warn" bindtap='checkfile' wx:if="{{filename!=''}}">查看已上传文件</button>
      <text>\n</text>
-     <button formType="submit" type="primary" bindtap='buttontap' wx:if="{{overdate==true}}">完成作业</button>
+     <button formType="submit" type="primary" bindtap='buttontap' wx:if="{{overdate==true}}">{{condition=='老师已批改反馈'?"重新提交作业":"完成作业"}}</button>
   </view>
 </view>

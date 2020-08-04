@@ -1,28 +1,31 @@
-// pages/t_ziliao/t_ziliao.js
+// pages/s_transition2/s_transition2.js
 Page({
 
+  /**
+   * 页面的初始数据
+   */
   data: {
 
   },
 
-  changetot_person:function(){
-    wx.navigateTo({
-      url: "/pages/s_transition2/s_transition2",
-    })
-  },
-
-  changeto_expandziliao:function(){
-    wx.navigateTo({
-      url: '/pages/t_expandziliao/t_expandziliao',
-    })
-  },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+         
   },
-   
+
+  changetointroduction:function(e){
+     wx.navigateTo({
+       url: '/pages/t_personziliao/t_personziliao',
+     })
+  },
+
+  changetoleisure:function(e){
+    wx.navigateTo({
+      url: '/pages/t_leisure/t_leisure',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

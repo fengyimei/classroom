@@ -1,8 +1,15 @@
 /* pages/t_ziliao/t_ziliao.wxss */
 .container{
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.text{
+.text1{
   display: block;
+  font-size: larger;
+  font-weight: bold;
+  border-radius: 20%;
+  border:3rpx solid rgb(191, 85, 212);
+  padding:10rpx;
 }

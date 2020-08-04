@@ -49,7 +49,7 @@ Page({
       })
       wx.setTabBarItem({
         index: 1,
-        text:'添加讨论',
+        text:'添加问题',
         "iconPath":"icons/homework-1.png",
         "selectedIconPath":"icons/homework-2.png"
       })
