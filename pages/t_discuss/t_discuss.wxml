@@ -1,11 +1,18 @@
 <!--pages/t_discuss/t_discuss.wxml-->
+<text class="title" decode="true">讨论帖子&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<view class="addcss" bindtap="addnew">
+  <text style="color:coral">添加新的讨论帖</text>
+  <image src='/images/add2.png' mode="widthFix" class="add">点</image>
+</view>
 <view class="tasks-list">
   <block wx:for="{{discuss}}" wx:for-item="task">
     <view  class="tasks-item" hover-class="press"  data-index="{{index}}"  bindlongpress="action_sheet" bindtap="changetoanswer"  >
-       <text decode="{{true}}">&nbsp;{{index + 1}} {{task.ischeck==0?"未回复":"已回复"}}</text>
+       <text decode="{{true}}" class="titlediscuss">&nbsp;{{index + 1}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回帖数：{{task.chat_length}}</text>
        <text class="text1">问题标题: <text class="text2">{{task.hTitle}}</text></text>
+       <text class="text1">提问人: <text class="text2">{{task.name}}</text></text>
        <text class="text1">问题内容：</text>
        <text decode="{{true}}">&nbsp;&nbsp;{{task.content}}</text>
+       <text class="text1">发布时间: <text class="text2">{{task.time_standard}}</text></text>
    </view>
   </block>
 </view>

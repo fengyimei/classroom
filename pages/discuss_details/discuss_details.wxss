@@ -1,0 +1,151 @@
+/* pages/t_answerdiscuss/t_answerdiscuss.wxss *//* pages/t_personziliao/t_personziliao.wxss */
+.ziliao{
+  font-weight: bold;
+}
+
+.text{
+  display: block;
+}
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 7rpx 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+  }
+  .section-input {
+    padding: 7rpx 10rpx;
+  }
+  .btn-area {
+    padding: 20rpx 10rpx;
+  }
+
+  .pull-right {
+    text-align: right;
+    color: blue;
+    }
+  .pull-left {
+    color: red;
+  }
+  /* .title {
+  height: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 7rpx 10px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  font-weight: bold;
+  } */
+  .body {
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 1rem 0.5rem;
+  justify-content: space-between;
+  box-sizing: border-box;
+  }
+  .send {
+  height: 10%;
+  flex-direction: row;
+  align-items: left;
+  padding: 10rpx 5rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+  }
+  .send-section {
+  display: flex;
+  font-weight: bold;
+  color: slateblue;
+  }
+  .input {width: 500rpx;}
+  .btn-mini {width:250rpx;}
+  
+  .answer{
+     border-bottom-style: dotted;
+     border-bottom-color: rgb(248, 125, 10);
+  }
+  
+  .file{
+    border-bottom-style: double;
+    border-bottom-color: rgb(248, 125, 10);
+  }
+  
+  .name{
+    border-bottom-style: dotted;
+    border-bottom-color:  rgb(248, 125, 10);
+  }
+  
+  .substract{
+    width:40rpx
+  }
+  
+  .add{
+    width:50rpx
+  }
+
+  .tasks-list {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 10rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+  .tasks-item {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    padding: 20rpx 10rpx;
+    justify-content: space-between;
+    box-sizing: border-box;
+    border-style: solid solid double solid;
+    border-bottom-width: thick;
+    border-color: rgb(63, 75, 238);
+    margin: 2rpx;
+  }   
+
+  .title{
+    font-weight: bold;
+    font-size: large;
+    color: coral;
+  }
+  
+  .add{
+    width:30rpx
+  }
+  
+  .addcss{
+    display: flex;
+    border: 3rpx solid coral;
+    padding: 5rpx;
+    border-radius: 20%;
+    margin-left: auto;
+  }
+
+  .teachercss{
+    color: rgb(233, 115, 4);
+  }
+  
+  
+  .press{
+    background-color:  rgb(191, 192, 192);
+  }
+
+
+
+  .index{
+    font-weight: bold;
+    color: limegreen;
+    font-style: italic;
+  }
+
+  .addcss{
+    display: inline;
+    border: 3rpx solid coral;
+    padding: 5rpx;
+    border-radius: 20%;
+  }
+  

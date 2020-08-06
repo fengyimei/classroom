@@ -10,13 +10,13 @@
       </checkbox-group>
     </scroll-view> -->
     <view class="section">
-      <!-- <view class="section-title">问题标题</view>
-      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange"/> -->
+      <view class="section-title">问题标题</view>
+      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange"/>
        <text decode="true" style="font-weight:bold;display:inline">是否匿名发表：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
                     <switch bindchange="radiochange" ></switch>
-      <view class="section-title">回复内容</view>
+      <view class="section-title">问题内容</view>
       <view class="section-input">
-          <textarea  name="textarea" placeholder="在此输入回复内容" auto-height="true" maxlength="-1" value="{{content}}" bindinput="contentChange" />
+          <textarea  name="textarea" placeholder="在此输入问题内容" auto-height="true" maxlength="-1" value="{{content}}" bindinput="contentChange" />
       </view>
     </view>
     <view class="btn-area">

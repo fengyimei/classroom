@@ -43,7 +43,7 @@ color: slateblue;
 
 .answer{
    border-bottom-style: dotted;
-   border-bottom-color: rgb(251, 255, 2);
+   border-bottom-color: rgb(248, 125, 10);
 }
 
 .file{
@@ -53,7 +53,7 @@ color: slateblue;
 
 .name{
   border-bottom-style: dotted;
-  border-bottom-color: rgb(251, 255, 2);
+  border-bottom-color:  rgb(248, 125, 10);
 }
 
 .substract{

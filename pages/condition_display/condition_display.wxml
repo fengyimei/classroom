@@ -19,11 +19,21 @@
         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;提交人数：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{complete_list.length}}\n\n</text></text>
         
         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;未提交人数：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{no_submit}}\n\n</text></text>
+        <view wx:if="{{overtime==true || identity=='teacher'}}">
+            <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;平均分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{avg}}\n\n</text></text>
 
-        <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;平均分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{avg}}\n\n</text></text>
+            <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;最高分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{maxx}}\n\n</text></text>
 
-        <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;最高分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{maxx}}\n\n</text></text>
-
-         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;老师整体评价：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{sum_markword}}\n\n</text></text>
+            <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;老师整体评价：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{sum_markword}}\n\n</text></text>
+        </view>
+        <view wx:if="{{identity=='teacher'}}">
+            <text style="font-weight:bold">{{overtime==true?'作业已截止,可添加整体评价:':'作业还未截止，无法添加整体评价'}}</text>
+        </view>
+        <view wx:if="{{overtime==true}}">
+                <textarea  placeholder="在此添加整体评价" value="{{sum_markdown}}" bindinput="sum_markchange"></textarea>
+                <button type="primary" bindtap="submit_mark">提交整体评价</button>
+                <text>\n\n</text>
+                <button type="primary" bindtap="to_assignment">如要布置额外作业，请点击此处跳转</button>
+        </view>
     </view>
 </view>

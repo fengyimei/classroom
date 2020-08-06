@@ -7,7 +7,6 @@
 .user-motto1{
   color:#0033FF;
   border:5px solid;
-  background-color: yellow;
   font-family: Arial, Helvetica, sans-serif;
   font-style:oblique;
   border-radius: 20rpx;
@@ -20,7 +19,6 @@
 .user-motto2{
   color:#0033FF;
   border:5px solid;
-  background-color: yellow;
   font-family: Arial, Helvetica, sans-serif;
   font-style:oblique;
   border-radius: 20rpx;

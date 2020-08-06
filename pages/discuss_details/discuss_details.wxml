@@ -1,0 +1,43 @@
+<!--pages/t_answerdiscuss/t_answerdiscuss.wxml-->
+<text class="title" decode="true">讨论详情&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
+<view class="addcss" bindtap="changetoadd">
+  <text style="color:coral">添加新的回复</text>
+  <image src='/images/add2.png' mode="widthFix" class="add"></image>
+  <text>\n</text>
+</view>
+<view>
+  <text class="ziliao" style="font-weight:bold">问题标题：
+  <text style="font-weight:normal">{{title}}\n</text></text>
+
+  <text style="font-weight:bold">提问人:<text style="font-weight:normal" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{name}}\n\n</text></text>
+
+
+  <text style="font-weight:bold">提问时间:<text style="font-weight:normal" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{time_standard}}\n\n</text></text>
+
+
+  <text style="font-weight:bold">问题内容:<text style="font-weight:normal" decode="true">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{content}}\n\n</text></text>
+
+
+  <text style="font-weight:bold">回复内容:\n</text>
+  <view class="tasks-list">
+      <block wx:for="{{chat_history}}" wx:for-item="item">
+        <view  class="tasks-item"  data-index="{{index}}" bindtap="t_students" bindlongpress="action_sheet"  hover-class="press" >
+          <text class="index">{{index + 1}}楼\n</text>
+          <text style="font-weight:bold" class="{{item.special}}" >回复人：<text style="font-weight:normal">{{item.name}}</text>\n</text> 
+          <text style="font-weight:bold" class="{{item.special}}">回复时间：<text style="font-weight:normal" >{{item.time_standard}}\n</text></text>
+          <text style="font-weight:bold"  class="{{item.special}}">回复内容:
+          <text decode="{{true}}">&nbsp;&nbsp;{{item.content}}</text></text>
+      </view>
+    </block>
+  </view>
+</view>
+
+
+
+<!-- <form bindsubmit="formSubmit">
+ <view class="section-input">
+        <textarea  name="textarea" placeholder="请在此输入回复内容" auto-height="true" maxlength="-1" value="{{t_reply}}" bindinput="contentChange" />
+  </view>
+  <view class="btn-area">
+    <button formType="submit" type="primary">提交回复</button>
+  </view> -->

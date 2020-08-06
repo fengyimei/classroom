@@ -8,9 +8,8 @@ Page({
     content:'',
     identity:'',
     curname:'',
-    is_selectable:false,
-    curid:"",
-    special:''
+    complete_list:[],
+    is_selectable:false
   },
   //事件处理函数
   // 发送信息
@@ -31,12 +30,18 @@ Page({
   },
   
   formSubmit2: function(e) {
-    if (this.data.content== ""){
+    if (this.data.hTitle== ""){
         wx.showToast({
-          title: '未输入回复内容',
+          title: '未输入问题标题',
           icon:'none'
         })
     }
+    else if (e.detail.value.textarea == ""){
+      wx.showToast({
+        title: '未输入问题内容',
+        icon:'none'
+      })
+  }
     else{
       console.log('form发生了submit事件，携带数据为：'+this.data.endDate)
       if(this.data.is_selectable){
@@ -48,69 +53,42 @@ Page({
         this.setData({
           curname:app.globalData.username
         })
-        if(app.globalData.identity=='teacher'){
-          this.setData({
-            special:'teachercss'
-          })
-        }
       }
       const db=wx.cloud.database()
       const cont = db.collection('discuss')
-      var templist=[]
-      const id=this.data.curid
-      cont.doc(id).get().then(res=>{
-          templist=res.data.chat_history.slice()
-          templist.push({
-            name:this.data.curname,
-            content:this.data.content,
-            time_str:app.globalData.time_str,
-            time_standard:app.globalData.time_standard,
-            special:this.data.special
-          })
-          console.log(templist)
-          const db2=wx.cloud.database()
-          db2.collection('discuss').doc(this.data.curid).update({
-            data:{
-              chat_history:templist,
-              chat_length:templist.length
-            }
-          }).then(res2=>{
-                 
-            var pages = getCurrentPages();  
-            var beforepage = pages[pages.length - 2];
-            
-            if (beforepage == undefined || beforepage == null){
-              return;
-            }   
-            beforepage.setData({
-              chat_history:templist,
-              chat_length:templist.length
-            })
-            wx.showToast({
-              title: '成功提交回复',
-            })
-            setTimeout(function(){
-              wx.navigateBack({
-                delta: 1,
-              })
-            },1500)
-
-             }).catch(res2=>{
-                wx.showToast({
-                  title: '数据库连接出错',
-                  icon:'none'
-                })
-                return
-              })
-      }).catch(res=>{
+      cont.add({
+      data:{
+        content: this.data.content,
+        hTitle:this.data.hTitle,
+        time_str: app.globalData.time_str,
+        time_standard: app.globalData.time_standard,
+        chat_history:[],
+        name:this.data.curname,
+        chat_length:0
+      }}).then(res=>{
+        console.log(res)
         wx.showToast({
-          title: '数据库连接出错',
+          title: '成功添加问题',
+          icon:'success'
+        })  
+        var page = getCurrentPages().pop();  
+        if (page == undefined || page == null) return;  
+        page.onLoad(); 
+        setTimeout(function(){
+          wx.redirectTo({
+            url: '../t_discuss/t_discuss',
+          })
+        },2000) 
+      }).catch(res=>{
+        console.log(res)
+        wx.showToast({
+          title: '添加问题失败',
           icon:'none'
-        })
-      })
+        }) 
+        return
+      })  
     }
   },
-
    
   radiochange:function(e){
     this.setData({
@@ -118,10 +96,7 @@ Page({
     })
  },
 
-  onLoad:function(otions){
-    this.setData({
-      curid:this.options.id
-    })
+  onLoad:function(){
     // if(app.globalData.identity=='student'){
     //   this.setData({
     //     identity:false

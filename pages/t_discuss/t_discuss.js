@@ -12,14 +12,18 @@ Page({
       const index=this.data.curindex
       const id=this.data.discuss[index]._id
       wx.navigateTo({
-        url: '/pages/t_answerdiscuss/t_answerdiscuss?id='+id,
+        url: '/pages/discuss_details/discuss_details?id='+id,
       })
   },
   onLoad: function (options) {
     const db = wx.cloud.database()
     db.collection('discuss').get().then(res => {  
+      var templist=res.data.slice()
+      templist.sort(function(a,b){
+           return a.time_str-b.time_str
+      })
       this.setData({
-          discuss:res.data
+          discuss:templist
       })
     }).catch(res=>{
       console.log(res)
@@ -30,6 +34,11 @@ Page({
     })
   },
 
+  addnew:function(e){
+    wx.navigateTo({
+      url: '/pages/add_discuss/add_discuss',
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

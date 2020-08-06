@@ -22,9 +22,9 @@
   </view>
   <view class="weui-cells weui-cells_after-title">
             <view class="weui-cell weui-cell_switch">
-                <view class="weui-cell__bd">是否选为优秀作业</view>
+                <view class="weui-cell__bd" style="font-weight:bold">是否选为优秀作业</view>
                 <view class="weui-cell__ft">
-                    <switch bindchange="radiochange" checked />
+                    <switch bindchange="radiochange" ></switch>
                 </view>
   </view>
   </view>

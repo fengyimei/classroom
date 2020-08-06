@@ -15,7 +15,7 @@ Page({
           filepath:'',
           markword:'',
           p_markword:'',
-          is_excellent:'0',
+          is_excellent:true,
           items: []  ,
           newcomment:'',
           pingyutotal:'',/*总评语 提交后的 */
@@ -154,7 +154,7 @@ openfile:function(){
         cur.condition='老师已批改反馈'
         curlist[this.data.curindex]=cur
         cur.is_excellent=this.data.is_excellent
-        if(cur.is_excellent=='1'){
+        if(cur.is_excellent==true){
           var i=0
           for(;i<e_list.length;i++){
               console.log(name)

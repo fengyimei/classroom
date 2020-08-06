@@ -1,0 +1,6 @@
+<view  bindtap="changetocommon" class="entrance">
+      <view class="user-motto1">公共讨论区</view>
+  </view>
+<view  bindtap="changetoprivate" class="entrance" >
+      <text class="user-motto2">私人讨论区</text>
+</view>

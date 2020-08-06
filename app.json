@@ -24,7 +24,10 @@
     "pages/homework_exhibition/homework_exhibition",
     "pages/demo01/demo01",
     "pages/register_teacher/register_teacher",
-    "pages/condition_display/condition_display"
+    "pages/condition_display/condition_display",
+    "pages/taolun_transition/taolun_transition",
+    "pages/add_discuss/add_discuss",
+    "pages/discuss_details/discuss_details"
   ],
   "window":{
     "backgroundTextStyle":"light",

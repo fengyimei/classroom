@@ -18,11 +18,11 @@ Page({
   },
   changetodiscuss:function(){
     wx.navigateTo({
-      url: '../t_discuss/t_discuss',
+      url: '../taolun_transition/taolun_transition',
     }) 
   },
   bindViewTap: function() {
-    wx.navigateTo({
+    wx.redirectTo({
       url: '../logs/logs'
     })
   },

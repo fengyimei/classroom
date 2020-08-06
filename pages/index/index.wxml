@@ -8,7 +8,7 @@
       <view class="user-motto1">资料区</view>
   </view>
   <view  bindtap="changetodiscuss" class="entrance" >
-      <text class="user-motto2">提问区</text>
+      <text class="user-motto2">讨论区</text>
   </view>
 </view>
 

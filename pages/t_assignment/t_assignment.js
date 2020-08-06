@@ -7,7 +7,8 @@ Page({
     hTitle: '',
     content:'',
     identity:'',
-    complete_list:[]
+    complete_list:[],
+    is_selectable:false
   },
   //事件处理函数
   // 发送信息
@@ -79,7 +80,8 @@ Page({
         content:this.data.content,
         nowData:this.data.nowDate,
         endDate:this.data.endDate,
-        complete_list:[]
+        complete_list:[],
+        is_selectable:this.data.is_selectable
       }}).then(res=>{
         console.log(res)
         wx.showToast({
@@ -166,7 +168,12 @@ Page({
       })  
     }
   },
-
+   
+  radiochange:function(e){
+    this.setData({
+      is_selectable:e.detail.value
+    })
+ },
 
   onLoad:function(){
     if(app.globalData.identity=='student'){

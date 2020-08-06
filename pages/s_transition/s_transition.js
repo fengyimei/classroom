@@ -8,6 +8,7 @@ Page({
          homework:'',
          answer:'',
          filename:'',
+         endDate:'',
          score:-1,
          markword:'',
          condition:'',
@@ -35,15 +36,14 @@ Page({
           })
         }
         else{
-          var util = require('../../utils/util.js')
-          var dayTime = util.formatTime(new Date());
-          const nowtime=dayTime.split(" ")[0].split("/")
-          const nowdate=[nowtime[0],nowtime[1],nowtime[2]]
-          let overdate=res.data[0].endDate
-          overdate=overdate.split('-')
-          console.log(nowtime)
-          if (parseInt(nowdate[0])>parseInt(overdate[0]) || (parseInt(nowdate[0])==parseInt(overdate[0])&&parseInt(nowdate[1])>parseInt(overdate[1])) || 
-          (parseInt(nowdate[0])==parseInt(overdate[0])&&parseInt(nowdate[1])==parseInt(overdate[1])&&parseInt(nowdate[2])>parseInt(overdate[2]))){
+          this.setData({
+            hTitle: res.data[0].hTitle,
+            homework: res.data[0].content,
+            endDate:res.data[0].endDate
+          })
+          console.log(app.globalData.time_rough)
+          console.log(this.data.endDate)
+          if (app.globalData.time_rough>this.data.endDate){
             this.setData({
               overdate:false
             })
@@ -53,27 +53,25 @@ Page({
               overdate:true
             })
           }
-          this.setData({
-            hTitle: res.data[0].hTitle,
-            homework: res.data[0].content
-          })
           const cur_list=res.data[0].complete_list
           for(let i in cur_list){
               if(cur_list[i].name==app.globalData.username){
                 this.setData({
                   answer: cur_list[i].answer,
                   score:cur_list[i].score,
-                  filename:cur_list[i].filepath,
-                  markword:cur_list[i].markword
+                  filename:cur_list[i].filename,
+                  filepath:cur_list[i].filepath,
+                  markword:cur_list[i].markword,
+                  endDate:cur_list[i].endDate
                 })
               }
           }
-          if(this.data.answer==''){
+          if(this.data.answer && this.data.filepath==''){
             this.setData({
               condition:"未提交"
             })
           }
-          else if(this.data.score==-1){
+          else if(this.data.score==''){
             this.setData({
               condition:"已提交"
             })
