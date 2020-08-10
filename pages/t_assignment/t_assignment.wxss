@@ -59,3 +59,39 @@ input{
 .switch{
   display: inline;
 }
+
+.tasks-list {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+.tasks-item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  padding: 20rpx 10rpx;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border-style: solid;
+  border-color: sandybrown;
+  margin: 20rpx;
+}   
+
+.press{
+  background-color:  rgb(191, 192, 192);
+}
+
+
+.condition_item{
+  font-weight: bold;
+  font-style: italic;
+  color: deeppink;
+}
+
+
+.title {
+  font-weight: bold;
+}

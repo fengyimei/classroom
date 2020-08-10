@@ -8,6 +8,7 @@ Page({
     username: "",
     userInfo:{},
     hasUserInfo: false,
+    identity:'',
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
@@ -36,6 +37,13 @@ Page({
       url: '../t_tasks/t_tasks'
     })
   },
+
+  changeto_studentlist:function(e){
+      wx.navigateTo({
+        url: '/pages/t_studentlist/t_studentlist',
+      })
+  },
+
   onLoad: function () {
     if(app.globalData.identity=='student'){
       wx.setNavigationBarTitle({
@@ -49,7 +57,7 @@ Page({
       })
       wx.setTabBarItem({
         index: 1,
-        text:'添加问题',
+        text:'学习档案',
         "iconPath":"icons/homework-1.png",
         "selectedIconPath":"icons/homework-2.png"
       })
@@ -61,7 +69,8 @@ Page({
       })
     }
     this.setData({
-      username: app.globalData.username
+      username: app.globalData.username,
+      identity:app.globalData.identity
     })
     if (app.globalData.userInfo) {
       this.setData({

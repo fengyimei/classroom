@@ -140,7 +140,7 @@ Page({
                 complete_list[i].answer=this.data.answer
                 complete_list[i].hascorrected=false
                 complete_list[i].issecond=true
-                complete_list[i].score=-1
+                complete_list[i].score=''
                 complete_list[i].markword=''
                 complete_list[i].condition='已重新提交，未批改'
                 complete_list[i].filepath=this.data.filepath
@@ -199,7 +199,7 @@ Page({
               var temp2={
                 name:app.globalData.username,
                 answer:that.data.answer,
-                score:-1,
+                score:'',
                 markword:'',
                 hascorrected:false,
                 condition:'已提交',

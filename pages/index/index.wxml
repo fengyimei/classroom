@@ -10,6 +10,10 @@
   <view  bindtap="changetodiscuss" class="entrance" >
       <text class="user-motto2">讨论区</text>
   </view>
+  <view  wx:if="{{identity=='teacher'}}" bindtap="changeto_studentlist" class="entrance2" >
+      <text>\n\n</text>
+      <text class="user-motto2">班级学生名单</text>
+  </view>
 </view>
 
 

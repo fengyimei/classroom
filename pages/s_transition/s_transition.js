@@ -7,6 +7,7 @@ Page({
          hTitle:'', 
          homework:'',
          answer:'',
+         filepath:'',
          filename:'',
          endDate:'',
          score:-1,
@@ -54,7 +55,7 @@ Page({
             })
           }
           const cur_list=res.data[0].complete_list
-          for(let i in cur_list){
+          for(let i=0;i<cur_list.length;i++){
               if(cur_list[i].name==app.globalData.username){
                 this.setData({
                   answer: cur_list[i].answer,
@@ -66,7 +67,7 @@ Page({
                 })
               }
           }
-          if(this.data.answer && this.data.filepath==''){
+          if(this.data.answer=='' && this.data.filepath==''){
             this.setData({
               condition:"未提交"
             })
@@ -96,7 +97,7 @@ Page({
     const that=this
     wx.cloud.downloadFile({
 
-      fileID: 'cloud://cloudclassroom-3tovs.636c-cloudclassroom-3tovs-1302479370/files/'+app.globalData.username+'作业文件.pdf',
+      fileID: 'cloud://cloudclassroom-3tovs.636c-cloudclassroom-3tovs-1302479370/files/'+app.globalData.username+'作业文件.docx',
       success: function (res) {
               const filePath = res.tempFilePath
               wx.openDocument({

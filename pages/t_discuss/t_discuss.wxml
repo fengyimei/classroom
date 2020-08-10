@@ -7,7 +7,7 @@
 <view class="tasks-list">
   <block wx:for="{{discuss}}" wx:for-item="task">
     <view  class="tasks-item" hover-class="press"  data-index="{{index}}"  bindlongpress="action_sheet" bindtap="changetoanswer"  >
-       <text decode="{{true}}" class="titlediscuss">&nbsp;{{index + 1}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回帖数：{{task.chat_length}}</text>
+       <text decode="{{true}}" class="titlediscuss">&nbsp;{{index + 1}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;回帖数：{{task.chat_length}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<text class='teacher_reply'>{{task.teacher_reply}}</text></text>
        <text class="text1">问题标题: <text class="text2">{{task.hTitle}}</text></text>
        <text class="text1">提问人: <text class="text2">{{task.name}}</text></text>
        <text class="text1">问题内容：</text>

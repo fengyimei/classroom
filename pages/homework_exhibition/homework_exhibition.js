@@ -50,6 +50,16 @@ Page({
                 filePath: filePath,
                 success: function (res) {
                     console.log('打开文档成功')
+                    wx.showToast({
+                      title: '成功打开文档',
+                    })
+                },
+
+                fail:function(res){
+                  wx.showToast({
+                    title: '下载文档失败',
+                    icon:'none'
+                  })
                 }
             })
         }

@@ -8,10 +8,74 @@ Page({
     content:'',
     identity:'',
     complete_list:[],
-    is_selectable:false
+    is_selectable:false,
+    avg:0,
+    submit_time:0,
+    excellent:0,
   },
   //事件处理函数
   // 发送信息
+  t_students: function(e) {
+    const curindex=e.currentTarget.dataset.index
+    const curid=this.data.tasks[curindex]._id
+    wx.navigateTo({
+      url: '../t_students/t_students?id='+curid
+    })
+  },
+
+  s_complete:function(e){
+    const curindex=e.currentTarget.dataset.index
+    const curid=this.data.tasks[curindex]._id
+    wx.navigateTo({
+      url: '/pages/s_transition/s_transition?id='+curid,
+    })
+  },
+  // 弹出底部菜单
+  action_sheet: function(e){
+    console.log(e)
+    this.setData({
+      currentindex:e.currentTarget.dataset.index
+    })
+    const delindex=this.data.currentindex
+    const delid=this.data.tasks[delindex]._id
+    const that=this
+    wx.showActionSheet({
+      itemList: ['删除'],
+      success(res){
+        const newlist=that.data.tasks.filter(
+          (v,i)=> {
+           return  i != delindex;
+          }
+        )
+        const db = wx.cloud.database()
+        db.collection('test_list').where({
+              _id:delid
+        }).remove()
+        .then(res => { console.log(res) 
+          console.log(newlist)
+        that.setData({
+          tasks: newlist,
+          currentindex:-1,
+         // actionSheetHidden: !this.data.actionSheetHidden, // 隐藏底部菜单
+          //toast1Hidden: false   // 弹出消息提示框
+        })
+          wx.showToast({
+            title: "删除成功",
+            icon:"success"
+          })
+    }).catch(res=>{
+      console.log(res)
+      wx.showToast({
+        title: "删除失败",
+        icon:"none"
+      })
+    })
+        },
+        fail(res){
+          console.log(res.errMsg)
+        }
+      })
+  },
   titleChange:function(e){
        this.setData({
          hTitle: e.detail.value
@@ -81,21 +145,15 @@ Page({
         nowData:this.data.nowDate,
         endDate:this.data.endDate,
         complete_list:[],
-        is_selectable:this.data.is_selectable
+        is_selectable:this.data.is_selectable,
+        e_list:[]
       }}).then(res=>{
         console.log(res)
         wx.showToast({
           title: '成功布置作业',
           icon:'success'
         })  
-        db.collection('excellent').add({
-          data:{
-            hTitle: this.data.hTitle,
-            content:this.data.content,
-            endDate:this.data.endDate,
-            e_list:[]
-          }
-        })
+
         setTimeout(function(){
           wx.switchTab({
             url: '/pages/t_tasks/t_tasks',
@@ -181,9 +239,44 @@ Page({
         identity:false
       })
       wx.setNavigationBarTitle({
-        title: "添加问题"
+        title: "学习档案"
       })
-    }
+      const db = wx.cloud.database()
+      db.collection('assignment').get().then(res => { console.log(res) 
+      const homework_list=res.data
+      var avg=0
+      var cishu=0
+      var youxiucishu=0
+      for(let i=0;i<homework_list.length;i++){
+        for(let j=0;j<homework_list[i].complete_list.length;j++){
+          if(homework_list[i].complete_list[j].name==app.globalData.username){   
+          avg=avg+homework_list[i].complete_list[j].score
+          cishu+=1
+          }
+        }
+        
+        for(let j=0;j<homework_list[i].e_list.length;j++){
+          if(homework_list[i].e_list[j].name==app.globalData.username){
+            youxiucishu=youxiucishu+1
+          }
+        }
+      }
+      if(cishu!=0){
+        avg/=cishu
+      }
+      this.setData({
+        avg:avg,
+        submit_time:cishu,
+        excellent:youxiucishu
+      })
+    }).catch(res=>{
+      wx.showToast({
+        title: '获取情况失败',
+        icon:'none'
+      })
+    })
+
+  }
     else{
       this.setData({
         identity:true

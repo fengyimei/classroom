@@ -27,7 +27,9 @@
     "pages/condition_display/condition_display",
     "pages/taolun_transition/taolun_transition",
     "pages/add_discuss/add_discuss",
-    "pages/discuss_details/discuss_details"
+    "pages/discuss_details/discuss_details",
+    "pages/t_studentlist/t_studentlist",
+    "pages/s_studentlist/s_studentlist"
   ],
   "window":{
     "backgroundTextStyle":"light",

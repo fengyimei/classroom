@@ -65,27 +65,39 @@ Page({
             content:this.data.content,
             time_str:app.globalData.time_str,
             time_standard:app.globalData.time_standard,
-            special:this.data.special
+            special:this.data.special,
+            identity:app.globalData.identity
           })
           console.log(templist)
+          var teacher_reply=''
+          if(app.globalData.identity=='teacher'){
+            teacher_reply='有老师回复'
+          }
           const db2=wx.cloud.database()
           db2.collection('discuss').doc(this.data.curid).update({
             data:{
               chat_history:templist,
-              chat_length:templist.length
+              chat_length:templist.length,
+              teacher_reply:teacher_reply
             }
           }).then(res2=>{
                  
             var pages = getCurrentPages();  
             var beforepage = pages[pages.length - 2];
-            
-            if (beforepage == undefined || beforepage == null){
+            var before2page=pages[pages.length - 3]
+            if (beforepage == undefined || beforepage == null||before2page == undefined || before2page == null){
+              wx.showToast({
+                title: '页面错误',
+                icon:'none'
+              })
               return;
             }   
             beforepage.setData({
               chat_history:templist,
               chat_length:templist.length
             })
+
+            before2page.onLoad()
             wx.showToast({
               title: '成功提交回复',
             })

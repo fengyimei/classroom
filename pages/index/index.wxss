@@ -40,6 +40,11 @@
 }
 
 .entrance {
+  margin: 20rpx;
+}
+
+
+.entrance2{
   margin-top: 40rpx;
 }
 

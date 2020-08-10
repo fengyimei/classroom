@@ -112,6 +112,15 @@ openfile:function(){
               filePath: filePath,
               success: function (res) {
                   console.log('打开文档成功')
+                  wx.showToast({
+                    title: '打开文档成功'
+                  })
+              },
+              fail:function(){
+                wx.showToast({
+                  title: '文档下载失败',
+                  icon:'none'
+                })
               }
           })
       }

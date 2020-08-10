@@ -62,3 +62,10 @@
   color: blueviolet;
 }
 
+.teacher_reply{
+  font-style: italic;
+  font-weight: bold;
+  font-size:large;
+  color: darkred;
+}
+
