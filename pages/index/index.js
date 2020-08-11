@@ -68,6 +68,29 @@ Page({
         selectedIconPath:"icons/correct-2.png"
       })
     }
+    else{
+      wx.setNavigationBarTitle({
+        title:'教师首页'
+      })
+      wx.setTabBarItem({
+        index: 0,
+        text:'教师首页',
+        "iconPath":"icons/home-1.png",
+        "selectedIconPath":"icons/home-2.png"
+      })
+      wx.setTabBarItem({
+        index: 1,
+        text:'布置作业',
+        "iconPath":"icons/homework-1.png",
+        "selectedIconPath":"icons/homework-2.png"
+      })
+      wx.setTabBarItem({
+        index: 2,
+        text:'批改作业',
+        iconPath:"icons/correct-1.png",
+        selectedIconPath:"icons/correct-2.png"
+      })
+    }
     this.setData({
       username: app.globalData.username,
       identity:app.globalData.identity

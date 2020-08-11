@@ -10,7 +10,7 @@ Page({
          filepath:'',
          filename:'',
          endDate:'',
-         score:-1,
+         score:0,
          markword:'',
          condition:'',
          overtime:false

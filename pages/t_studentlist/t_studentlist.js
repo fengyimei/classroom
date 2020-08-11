@@ -19,19 +19,30 @@ Page({
         identity:true
       })
     }
-    const db = wx.cloud.database()
-    db.collection('test_list').get().then(res => { console.log(res) 
+    // const db = wx.cloud.database()
+    // db.collection('test_list').get().then(res => { console.log(res) 
+    //   this.setData({
+    //       tasks:res.data
+    //   })
+    // }).catch(res=>{
+    //   console.log(res)
+    //   wx.showToast({
+    //     title: "获取作业失败",
+    //     icon:"none"
+    //   })
+    // })
+    wx.cloud.callFunction({
+      name:'get_student'
+    }).then(res=>{
       this.setData({
-          tasks:res.data
+        tasks:res.result.data
       })
     }).catch(res=>{
-      console.log(res)
       wx.showToast({
-        title: "获取作业失败",
-        icon:"none"
+        title: '名单获取失败',
+        icon:'none'
       })
     })
-
   },
   // 跳转到学生列表
   t_students: function(e) {

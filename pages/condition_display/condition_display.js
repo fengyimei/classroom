@@ -50,12 +50,15 @@ Page({
         var maxx=0
         var temp=0
         for(let i=0;i<this.data.complete_list.length;i++){
-          temp+=parseInt(this.data.complete_list[i].score)
-          if(parseInt(this.data.complete_list[i].score)>maxx){
-            maxx=parseInt(this.data.complete_list[i].score)
+          if(this.data.complete_list[i].score!=""){
+            temp+=parseInt(this.data.complete_list[i].score)
+            if(parseInt(this.data.complete_list[i].score)>maxx){
+              maxx=parseInt(this.data.complete_list[i].score)
+            }
           }
         }
-        temp=temp/this.data.complete_list.length
+        if(this.data.complete_list.length!=0)
+            temp=temp/this.data.complete_list.length
         this.setData({
           avg:temp,
           maxx:maxx

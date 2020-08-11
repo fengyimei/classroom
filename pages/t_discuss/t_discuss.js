@@ -16,9 +16,11 @@ Page({
       })
   },
   onLoad: function (options) {
-    const db = wx.cloud.database()
-    db.collection('discuss').get().then(res => {  
-      var templist=res.data.slice()
+    wx.cloud.callFunction({
+      name:'get_discuss'
+    }).then(res=>{
+      var templist=res.result.data.slice()
+      console.log(templist)
       templist.sort(function(a,b){
            return a.time_str-b.time_str
       })
@@ -28,11 +30,27 @@ Page({
     }).catch(res=>{
       console.log(res)
       wx.showToast({
-        title: "获取询问失败",
+        title: "获取讨论失败",
         icon:"none"
       })
     })
   },
+    // const db = wx.cloud.database()
+    // db.collection('discuss').get().then(res => {  
+    //   var templist=res.data.slice()
+    //   templist.sort(function(a,b){
+    //        return a.time_str-b.time_str
+    //   })
+    //   this.setData({
+    //       discuss:templist
+    //   })
+    // }).catch(res=>{
+    //   console.log(res)
+    //   wx.showToast({
+    //     title: "获取询问失败",
+    //     icon:"none"
+    //   })
+    // })
 
   addnew:function(e){
     wx.navigateTo({

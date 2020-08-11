@@ -18,6 +18,14 @@
   margin: 20rpx;
 }   
 
+
+.xuanzuo{
+  font-style: italic;
+  font-size: large;
+  color: blue;
+  font-weight:bold;
+}
+
 .press{
   background-color:  rgb(191, 192, 192);
 }

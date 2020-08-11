@@ -21,3 +21,10 @@
 .press{
   background-color:  rgb(191, 192, 192);
 }
+
+.xuanzuo{
+  font-style: italic;
+  font-size: large;
+  color: blue;
+  font-weight:bold;
+}
