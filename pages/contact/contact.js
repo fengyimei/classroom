@@ -40,6 +40,7 @@ Page({
    * 生命周期函数--监听页面加载 
    */ 
   onLoad: function(options) { 
+    var that=this
     this.setData({ 
       t_name:options.t_name, 
       s_name:options.s_name, 
@@ -84,20 +85,37 @@ Page({
       icon:"none" 
     }) 
   }) 
-  add.where({ 
+  add.field({ 
     'teacher':this.data.t_name, 
     'student.name':this.data.s_name 
   }).watch({ 
     onChange: function (snapshot) { 
       //监控数据发生变化时触发 
       console.log(snapshot) 
-       
-    }, 
+      add.where(
+        {
+          'teacher':that.data.t_name, 
+          'student.name':that.data.s_name 
+        }
+      ).field(
+        {
+          'student.$.msg':true
+        }
+      ).get().then(res => { console.log(res.data) 
+        that.setData(
+          {
+            msgList:res.data[0].student[0].msg,
+            toView:'msg-' + (res.data[0].student[0].msg.length - 1)
+          }
+        )}
+        )
+        that.blur()
+     }, 
    
     onError:(err) => { 
       console.error(err) 
-    } 
-  }) 
+    }, 
+  })
  
  
   }, 
