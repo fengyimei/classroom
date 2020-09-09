@@ -1,0 +1,17 @@
+<view wx:if="{{identity}}"> 
+<block wx:for="{{studentname}}" wx:for-item="items"> 
+<view > 
+<text wx:if="{{items.identity=='student'}}" bindtap="t_caontact" data-name="{{items.id}}">{{items.id}} </text> 
+</view> 
+ 
+</block> 
+</view> 
+ 
+<view wx:if="{{!identity}}"> 
+<block wx:for="{{studentname}}" wx:for-item="items"> 
+<view > 
+<text wx:if="{{items.identity=='teacher'}}" bindtap="s_caontact" data-name="{{items.id}}">{{items.id}} </text> 
+</view> 
+ 
+</block> 
+</view> 
