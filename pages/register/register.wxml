@@ -2,9 +2,9 @@
 <view class="login">
     <form bindsubmit="formSubmit" bindreset="formReset">
         <view class="section">
-            <input name="userName"  type="text" maxlength="15" placeholder="请输入您的姓名" value="{{account}}" bindinput="accountchange"/>
+            <input name="userName"  type="text" maxlength="15" placeholder="请输入您的用户名" value="{{account}}" bindinput="accountchange"/>
             <input  maxlength="100" type="password" placeholder="请输入您想设定的密码" value="{{password}}" bindinput="passwordchange" />
-            <input maxlength="100" placeholder="请再次输入您设定的密码"  type="password"  value="{{passwordagain}}" bindinput="passwordagainchange" />
+            <input maxlength="100" placeholder="请确认密码"  type="password"  value="{{passwordagain}}" bindinput="passwordagainchange" />
             <input  maxlength="100" placeholder="请输入您的手机号码" value="{{phonenumber}}" bindinput="phonenumberchange" />
         </view>
         <button type="default" formType="submit" hover-class="other-button-hover"> 注册 </button>

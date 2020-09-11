@@ -50,7 +50,7 @@
                     </checkbox-group>
 					<a class="weui-cell weui-cell_active weui-cell_link">
             <image src='/images/add.png' mode='widthFix' class="add" bindtap="add"></image>
-            <input value='{{newcomment}}' bindblur="newchange" placeholder="在此添加快捷评语"/>
+            <input value='{{newcomment}}' bindinput="newchange" placeholder="在此添加快捷评语"/>
           	</a>
 				<text >\n</text>
         </view>

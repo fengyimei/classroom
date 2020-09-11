@@ -15,7 +15,7 @@ Page({
           filepath:'',
           markword:'',
           p_markword:'',
-          is_excellent:true,
+          is_excellent:false,
           items: []  ,
           newcomment:'',
           pingyutotal:'',/*总评语 提交后的 */
@@ -130,12 +130,19 @@ openfile:function(){
   // 发送信息
   formSubmit: function(e) {
     console.log(e.detail.value.input)
-    if (this.data.p_score==-1)
+    if (this.data.p_score=='')
     {
         wx.showToast({
             title: '未打分',
             icon:'none'
           })
+    }
+    else if(parseInt(this.data.p_score)<0 || parseInt(this.data.p_score)>100)
+    {
+      wx.showToast({
+        title: '分数超出范围',
+        icon:'none'
+      })
     }
     else if(this.data.p_markword == ""){
         wx.showToast({
@@ -227,7 +234,8 @@ openfile:function(){
 },
   
   deleteitem:function(e){
-      const index=e.index
+      console.log(e)
+      const index=e.currentTarget.dataset.index
       var templist=this.data.items.slice()
       templist.splice(index,1)
       for(let i=0;i<templist.length;i++){
@@ -242,13 +250,6 @@ openfile:function(){
     this.setData({
       newcomment:e.detail.value
     })
-    const newitems1=this.data.items
-      newitems1.push({name:'',value:e.detail.value})
-      console.log(e)
-      this.setData({
-        items:newitems1
-        })
-
   },
 
   add:function(e){

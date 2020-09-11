@@ -48,17 +48,30 @@ Page({
       }) 
     } 
     const db = wx.cloud.database() 
-    db.collection('account_information').get().then(res => { console.log(res.data)  
-      this.setData({ 
-        studentname:res.data 
-      }) 
-    }).catch(res=>{ 
-      console.log(res) 
-      wx.showToast({ 
-        title: "学生姓名获取失败", 
-        icon:"none" 
-      }) 
-    }) 
+    const t_name=this.data.t_name
+    db.collection('contact').where({
+      teacher:t_name
+    }).get().then(res=>{
+      console.log(res.data) 
+      var temp=[]
+      for(let i=0;i<res.data[0].student.length;i++){
+       let tempname=res.data[0].student[i].name
+       var  flag=false
+       let tempmsg=res.data[0].student[i].msg
+       let templ=res.data[0].student[i].msg.length
+       if(templ!=0){
+       console.log(tempmsg[templ-1].content.length)
+       let tempstrl=tempmsg[templ-1].content.length
+        if(templ!=0 && tempmsg[templ-1].speaker=='student' && (tempmsg[templ-1].content.charAt(tempstrl-1)=='？' || tempmsg[templ-1].content.charAt(tempstrl-1)=='?')){
+          flag=true
+        }
+      }
+        temp.push([res.data[0].student[i].name,flag])
+      }
+      this.setData({
+        studentname:temp
+      })
+    })
   }, 
   /**
    * 生命周期函数--监听页面初次渲染完成

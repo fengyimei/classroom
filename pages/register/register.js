@@ -69,20 +69,50 @@ Page({
               identity:'student'
             }
           }).then(res2=>{
-            wx.showToast({
-              title: '注册成功',
+            const con2=db.collection('contact')
+            con2.where({
+              teacher:'fzy'
+            }).get().then(res3=>{
+              var temp=res3.data[0].student.slice()
+              temp.push({msg:[] , student:curid })
+              db.collection('contact').where({
+                teacher:'fzy'
+              }).update({
+                data:{
+                  student:temp
+                }
+              }).then(res4=>{
+                wx.showToast({
+                  title: '注册成功',
+                })
+                setTimeout(function(){
+                  wx.navigateBack({
+                    delta:1
+                  })},2000)
+              }).catch(res5=>{
+                wx.showToast({
+                  title: '注册失败',
+                  icon:'none'
+                })
+              })
+              }).catch(res3=>{
+                wx.showToast({
+                  title: '注册失败',
+                  icon:'none'
+                })
+              })
+            }).catch(res2=>{
+              wx.showToast({
+                title: '注册失败',
+                icon:'none'
+              })
             })
-            setTimeout(function(){
-              wx.navigateBack({
-                delta:1
-              })},2000)
-          }).catch(res2=>{
-            wx.showToast({
-              title: '注册失败',
-              icon:'none'
-            })
-          })
         }
+      }).catch(res=>{
+        wx.showToast({
+          title: '注册失败',
+          icon:'none'
+        })
       })
     }
  },

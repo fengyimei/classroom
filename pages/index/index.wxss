@@ -28,10 +28,12 @@
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+  overflow:hidden;  
+  width: 130rpx;
+  height: 130rpx; 
+  left: 50%;  
+  border-radius: 50%;  
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.2);  
 }
 
 .userinfo-nickname {
