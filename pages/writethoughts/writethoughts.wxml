@@ -1,0 +1,4 @@
+<!--pages/writethoughts/writethoughts.wxml-->
+<textarea placeholder="请在此填写感想" maxlength="-1" value="{{thoughts}}" bindinput="change" auto-height="true"></textarea>
+<text>\n\n\n\n\n</text>
+<button type="primary" bindtap="addthoughts">提交感想</button>

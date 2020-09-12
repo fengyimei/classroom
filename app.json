@@ -31,7 +31,8 @@
     "pages/t_studentlist/t_studentlist",
     "pages/s_studentlist/s_studentlist",
     "pages/private/private",
-    "pages/contact/contact"
+    "pages/contact/contact",
+    "pages/writethoughts/writethoughts"
   ],
   "window":{
     "backgroundTextStyle":"light",

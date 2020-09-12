@@ -63,7 +63,6 @@ Page({
                   filename:cur_list[i].filename,
                   filepath:cur_list[i].filepath,
                   markword:cur_list[i].markword,
-                  endDate:cur_list[i].endDate
                 })
               }
           }

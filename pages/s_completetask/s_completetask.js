@@ -115,7 +115,7 @@ Page({
   formSubmit:function(e){
       if(this.data.answer=='' && this.data.filepath==''){
         wx.showToast({
-          title: '未输入有效作业内容',
+          title: '未提交有效作业内容',
           icon:'none'
         })
       }

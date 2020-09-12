@@ -35,44 +35,65 @@ Page({
    */ 
   onLoad: function (options) { 
     if(app.globalData.identity=='student'){ 
+      const db = wx.cloud.database() 
       this.setData({ 
         identity: false, 
         s_name:app.globalData.username 
-      } 
-     ) 
+      }) 
+      db.collection('contact').where({
+          teacher:'fzy'
+      }).get().then(res=>{
+          var temps=res.data[0].student
+          var flag=false
+          for(let i=0;i<temps.length;i++){
+            if(temps[i].name==this.data.s_name){
+              if(temps[i].msg.length!=0){
+                let templ=temps[i].msg.length-1
+                let tempmsgl=temps[i].msg[templ].content.length-1
+                if(temps[i].msg[templ].speaker=='server'){
+                     flag=true
+                }
+              }
+              break
+            }
+          }
+          this.setData({
+            studentname:[['fzy',flag]]
+          })
+      })
     } 
     else{ 
       this.setData({ 
         identity:true, 
         t_name:app.globalData.username 
       }) 
-    } 
-    const db = wx.cloud.database() 
-    const t_name=this.data.t_name
-    db.collection('contact').where({
-      teacher:t_name
-    }).get().then(res=>{
-      console.log(res.data) 
-      var temp=[]
-      for(let i=0;i<res.data[0].student.length;i++){
-       let tempname=res.data[0].student[i].name
-       var  flag=false
-       let tempmsg=res.data[0].student[i].msg
-       let templ=res.data[0].student[i].msg.length
-       if(templ!=0){
-       console.log(tempmsg[templ-1].content.length)
-       let tempstrl=tempmsg[templ-1].content.length
-        if(templ!=0 && tempmsg[templ-1].speaker=='student' && (tempmsg[templ-1].content.charAt(tempstrl-1)=='？' || tempmsg[templ-1].content.charAt(tempstrl-1)=='?')){
-          flag=true
+      const db = wx.cloud.database() 
+      const t_name=this.data.t_name
+      db.collection('contact').where({
+        teacher:t_name
+      }).get().then(res=>{
+        console.log(res.data) 
+        var temp=[]
+        for(let i=0;i<res.data[0].student.length;i++){
+        let tempname=res.data[0].student[i].name
+        var  flag=false
+        let tempmsg=res.data[0].student[i].msg
+        let templ=res.data[0].student[i].msg.length
+        if(templ!=0){
+        console.log(tempmsg[templ-1].content.length)
+        let tempstrl=tempmsg[templ-1].content.length
+          if(templ!=0 && tempmsg[templ-1].speaker=='student' && (tempmsg[templ-1].content.charAt(tempstrl-1)=='？' || tempmsg[templ-1].content.charAt(tempstrl-1)=='?')){
+            flag=true
+          }
         }
-      }
-        temp.push([res.data[0].student[i].name,flag])
-      }
-      this.setData({
-        studentname:temp
-      })
+          temp.push([res.data[0].student[i].name,flag])
+        }
+        this.setData({
+          studentname:temp
+        })
     })
-  }, 
+  }
+}, 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */

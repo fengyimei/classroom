@@ -12,6 +12,7 @@ Page({
     avg:0,
     submit_time:0,
     excellent:0,
+    thoughts:''
   },
   //事件处理函数
   // 发送信息
@@ -30,6 +31,13 @@ Page({
       url: '/pages/s_transition/s_transition?id='+curid,
     })
   },
+
+  toWriteThoughts:function(){
+    wx.navigateTo({
+      url: '/pages/writethoughts/writethoughts?id='+app.globalData.username,
+    })
+  },
+
   // 弹出底部菜单
   action_sheet: function(e){
     console.log(e)
@@ -242,6 +250,13 @@ Page({
         title: "学习档案"
       })
       const db = wx.cloud.database()
+      db.collection('account_information').where({
+        id: app.globalData.username
+      }).get().then(res=>{
+        this.setData({
+          thoughts: res.data[0].thoughts
+        })
+      })
       db.collection('assignment').get().then(res => { console.log(res) 
       const homework_list=res.data
       var avg=0

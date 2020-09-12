@@ -4,6 +4,7 @@
     <view class="t_homework">
         <text class="text1">作业标题:<text class="text2">{{hTitle}}</text>\n</text>
         <text class="text1">作业要求:<text class="text2"> {{homework}}</text>\n</text>
+        <text class="text1">作业截止时间:<text class="text2"> {{endDate}}</text>\n</text>
     </view>
     <view class="s_homework">
       <text class="text1">作业状态：<text class="text2" style="color:firebrick">{{condition}}</text>\n</text>

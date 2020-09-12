@@ -74,7 +74,7 @@ Page({
               teacher:'fzy'
             }).get().then(res3=>{
               var temp=res3.data[0].student.slice()
-              temp.push({msg:[] , student:curid })
+              temp.push({msg:[] , name:curid })
               db.collection('contact').where({
                 teacher:'fzy'
               }).update({

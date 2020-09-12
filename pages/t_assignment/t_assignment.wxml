@@ -42,8 +42,10 @@
         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;平均分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{avg}}\n\n</text></text>
 
         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;优秀作业次数：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{excellent}}\n\n</text></text>
-        
 
+         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;个人感想：<text decode="true" style="color:black;font-style:normal">\n&nbsp;&nbsp;{{thoughts}}\n\n</text></text>
+        
+         <button type="primary" bindtap="toWriteThoughts">点击添加感想</button>
 </view>
 
 </view>

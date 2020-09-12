@@ -10,7 +10,7 @@
 <view wx:if="{{!identity}}"> 
 <block wx:for="{{studentname}}" wx:for-item="items"> 
 <view > 
-<text wx:if="{{items.identity=='teacher'}}" bindtap="s_caontact" data-name="{{items.id}}">{{items.id}} </text> 
+<view bindtap="s_caontact" data-name="{{items[0]}}" class="tasks-item" hover-class="press">{{items[0]}} <view wx:if="{{items[1]}}" style="color:rgb(255, 115, 0)">(有未回复内容)</view></view> 
 </view> 
  
 </block> 
