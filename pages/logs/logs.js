@@ -5,6 +5,7 @@ Page({
   data: {
     account: "",
     password:"",
+    current:false
   },
 
   accountchange:function(e){
@@ -52,6 +53,7 @@ Page({
             const curname=res.data[0].id
             app.globalData.username=curname
             app.globalData.identity=curidentity
+            app.globalData.time=res.data[0].time
             console.log(res.data[0])
             console.log(app.globalData.username)
             wx.showToast({
@@ -65,7 +67,7 @@ Page({
           }
       }).catch(res=>{
         wx.showToast({
-          title: '登录失败',
+          title: '请检查网络',
           icon:'none'
         })
       })
@@ -135,13 +137,14 @@ Page({
       var beijing_datetime = new Date(parseInt(timestamp) * 1000)
       var dayTime = util.formatTime(beijing_datetime)
       const nowtime=dayTime.split(" ")[0].split("/")
+      const nowsecond=dayTime.split(" ")[1]
       const nowdate=[nowtime[0],nowtime[1],nowtime[2]]
       app.globalData.time_standard=dayTime
       dayTime=dayTime.replace(/\//g,"")
       dayTime=dayTime.replace(/:/g,'')
       dayTime=dayTime.replace(/\s/g,"")
-      console.log(dayTime)
       app.globalData.time_rough=nowdate.join('-')
+      app.globalData.time_standard2=nowdate.join('-')+' '+nowsecond
       app.globalData.time_str=dayTime
      }
   })   

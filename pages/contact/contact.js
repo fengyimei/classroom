@@ -109,7 +109,6 @@ Page({
           }
         )}
         )
-        that.blur()
      }, 
    
     onError:(err) => { 

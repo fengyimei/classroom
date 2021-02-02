@@ -4,9 +4,36 @@ Page({
   data: {
     tasks: [],
     currentindex:-1,
-    identity:''
+    selectArray: [
+      {id: '1', text: '一班'},
+      {id: '2', text: '二班'},
+      {id: '3', text: '三班'}
+    ],
+    identity:'',
+    curclass:0
   },
   //事件处理函数
+  getdata:function(e)
+  {
+    console.log(e)
+    this.setData({
+      currentclass:e.detail.id
+    })
+    const db = wx.cloud.database()
+    const cont=db.collection('class')
+    var cur=this.data.currentclass
+    const that=this
+    cont.where({
+      classno:cur
+    }).get().then(res=>{
+       var templist=res.data[0].classstudent
+       that.setData({
+         tasks:templist
+       })
+    })
+  },
+
+  
   onLoad: function(){
     if(app.globalData.identity=='student'){
       this.setData({
@@ -31,25 +58,19 @@ Page({
     //     icon:"none"
     //   })
     // })
-    wx.cloud.callFunction({
-      name:'get_student'
-    }).then(res=>{
-      this.setData({
-        tasks:res.result.data
-      })
-    }).catch(res=>{
-      wx.showToast({
-        title: '名单获取失败',
-        icon:'none'
-      })
-    })
-  },
-  // 跳转到学生列表
-  t_students: function(e) {
-    const curindex=e.currentTarget.dataset.index
-    const curid=this.data.tasks[curindex]._id
-    wx.navigateTo({
-      url: '../t_students/t_students?id='+curid
+    const db = wx.cloud.database()
+    const cont=db.collection('class')
+    var cur=this.data.curclass
+    console.log(cur)
+    const that=this
+    cont.where({
+      classno:cur
+    }).get().then(res=>{
+      console.log(res.data)
+       var templist=res.data[0].classstudent
+       that.setData({
+          tasks:templist
+       })
     })
   },
 

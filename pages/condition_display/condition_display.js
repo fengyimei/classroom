@@ -37,7 +37,7 @@ Page({
           endDate:res.data[0].endDate,
           e_list: res.data[0].e_list,
           complete_list:res.data[0].complete_list,
-          no_submit:30-res.data[0].complete_list.length,
+          no_submit:6-res.data[0].complete_list.length,
           identity:app.globalData.identity,
           sum_markword:res.data[0].sum_markword
         })

@@ -73,7 +73,7 @@ formSubmit:function(e){
           }) 
           setTimeout(function(){
             wx.redirectTo({
-              url: '../t_/t_personziliao'
+              url: '../t_leisure/t_leisure'
             })
           },2000) 
         }).catch(res3=>{

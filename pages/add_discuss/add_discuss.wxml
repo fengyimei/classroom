@@ -11,7 +11,7 @@
     </scroll-view> -->
     <view class="section">
       <view class="section-title">问题标题</view>
-      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange"/>
+      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange" maxlength="20"/>
        <text decode="true" style="font-weight:bold;display:inline">是否匿名发表：&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
                     <switch bindchange="radiochange" ></switch>
       <view class="section-title">问题内容</view>

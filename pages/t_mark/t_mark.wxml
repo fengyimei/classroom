@@ -12,7 +12,8 @@
 <view class="file">
   <text>是否提交文件：</text>
   <text style="font-weight:bold">{{filepath!=''?"是":"否"}}</text>
-  <view class="send-section" bindtap="openfile" wx:if="{{filepath!=''}}">点击此处查看文件</view>
+  <text>\n\n</text>
+  <button class="send-section" bindtap="openfile" wx:if="{{filepath!=''}}">点击此处查看文件</button>
 </view>
 <form bindsubmit="formSubmit" bindreset="formReset">
   <view class="title">

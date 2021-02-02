@@ -88,7 +88,7 @@ input{
 .condition_item{
   font-weight: bold;
   font-style: italic;
-  color: deeppink;
+  color: rgb(14, 87, 243);
 }
 
 

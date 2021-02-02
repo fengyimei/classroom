@@ -86,12 +86,12 @@ Page({
           //tempFilePath可以作为img标签的src属性显示图片
           const tempFilePaths=res.tempFiles[0].path
           wx.cloud.uploadFile({
-              cloudPath:'files/'+app.globalData.username+"作业文件"+".docx",//上传到云端的路径
+              cloudPath:'files/'+app.globalData.username+"作业文件.docx",//上传到云端的路径
               filePath:tempFilePaths,//小程序的临时文件路径
               success:res=>{
                 console.log(res)
                 that.setData({
-                  filename:app.globalData.username+'作业文件'+'.docx',
+                  filename:app.globalData.username+'作业文件.docx',
                   filepath:res.fileID
                 })
                   wx.showToast({

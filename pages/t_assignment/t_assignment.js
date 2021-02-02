@@ -8,14 +8,28 @@ Page({
     content:'',
     identity:'',
     complete_list:[],
+    selectArray: [
+      {id: '1', text: '一班'},
+      {id: '2', text: '二班'},
+      {id: '3', text: '三班'}
+    ],
     is_selectable:false,
     avg:0,
     submit_time:0,
     excellent:0,
-    thoughts:''
+    thoughts:'',
+    time:0,
+    currentclass:0
   },
   //事件处理函数
   // 发送信息
+  getdata:function(e)
+  {
+    console.log(e)
+    this.setData({
+      currentclass:e.detail.id
+    })
+  },
   t_students: function(e) {
     const curindex=e.currentTarget.dataset.index
     const curid=this.data.tasks[curindex]._id
@@ -23,7 +37,7 @@ Page({
       url: '../t_students/t_students?id='+curid
     })
   },
-
+   
   s_complete:function(e){
     const curindex=e.currentTarget.dataset.index
     const curid=this.data.tasks[curindex]._id
@@ -143,7 +157,16 @@ Page({
         })
         
         const db=wx.cloud.database()
-        const cont = db.collection('assignment')
+        var curclass=''
+        if(this.data.currentclass==0){
+          curclass='assignment'
+        }
+        else if(this.data.currentclass==1){
+          curclass='assignment2'
+        }
+        else
+          curclass='assignment3'
+        const cont = db.collection(curclass)
 
     cont.add({
 
@@ -244,7 +267,7 @@ Page({
   onLoad:function(){
     if(app.globalData.identity=='student'){
       this.setData({
-        identity:false
+        identity:false,
       })
       wx.setNavigationBarTitle({
         title: "学习档案"
@@ -254,7 +277,8 @@ Page({
         id: app.globalData.username
       }).get().then(res=>{
         this.setData({
-          thoughts: res.data[0].thoughts
+          thoughts: res.data[0].thoughts,
+          time:res.data[0].time
         })
       })
       db.collection('assignment').get().then(res => { console.log(res) 

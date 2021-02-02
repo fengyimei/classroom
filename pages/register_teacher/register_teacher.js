@@ -4,6 +4,7 @@ Page({
   data: {
           account:"",
           password:"",
+          invite:"",
           passwordagain:"",
           phonenumber:""
   },
@@ -14,6 +15,12 @@ Page({
     })
  },
 
+  invitechange:function(e){
+    this.setData({
+      invite:e.detail.value
+    })
+  },
+ 
  passwordchange:function(e){
    this.setData({
     password:e.detail.value

@@ -12,11 +12,16 @@
     </scroll-view> -->
     <view class="section">
       <view class="section-title">作业标题</view>
-      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange"/>
+      <input name="input" placeholder="在此输入标题"  value="{{hTitle}}"  bindinput="titleChange" maxlength="20"/>
       <view class="section-title">作业要求：</view>
       <view class="section-input">
           <textarea  name="textarea" placeholder="在此输入要求" auto-height="true" maxlength="-1" value="{{content}}" bindinput="contentChange" />
       </view>
+    </view>
+    <view>
+      <view class="section-title">作业对应的班级</view>
+      <select  prop-array="{{selectArray}}" bind:myget="getdata"></select>
+      <text>\n</text>
     </view>
     <view>
         <text style="font-weight:bold" decode="true">是否为选做作业&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</text>
@@ -42,6 +47,8 @@
         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;平均分：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{avg}}\n\n</text></text>
 
         <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;优秀作业次数：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{excellent}}\n\n</text></text>
+
+        <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;学习时长：<text decode="true" style="color:black;font-style:normal">&nbsp;&nbsp;{{time}}分\n\n</text></text>
 
          <text decode="true" class="condition_item">&nbsp;&nbsp;&nbsp;个人感想：<text decode="true" style="color:black;font-style:normal">\n&nbsp;&nbsp;{{thoughts}}\n\n</text></text>
         

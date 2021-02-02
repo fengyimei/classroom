@@ -1,8 +1,8 @@
 <view class="tasks-list">
+  <select  prop-array="{{selectArray}}" bind:myget="getdata"></select>
     <block wx:for="{{tasks}}" wx:for-item="task">
       <view  class="tasks-item"  data-index="{{index}}"  bindlongpress="action_sheet"  hover-class="press" >
         <text>{{index + 1}}</text>
-        <text style="font-weight:bold">学号：<text style="font-weight:normal">{{task.id}}</text>\n</text> 
         <text style="font-weight:bold">姓名：<text style="font-weight:normal">{{task.name}}\n</text></text>
     
     </view>

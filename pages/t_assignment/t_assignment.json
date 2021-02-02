@@ -1,5 +1,6 @@
 {
-  "usingComponents": {},
+  "usingComponents": {"select": "/component/select"},
   "navigationBarTitleText": "布置新作业"
+  
 
 }

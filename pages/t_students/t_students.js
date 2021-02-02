@@ -7,7 +7,7 @@ Page({
           content:'',
           endDate:'',
           complete_list:[],
-          uncomplete_list:[]
+          uncomplete_list:['fzy']
   },
   //事件处理函数
   onLoad:function(options){
@@ -31,26 +31,27 @@ Page({
           endDate:res.data[0].endDate,
           complete_list: res.data[0].complete_list
         })
-        const db = wx.cloud.database()
-        db.collection('account_information').where({
-          identity:"student"
-        }).get().then(res=>{
-          var complete_name=[]
-          var uncomplete_name=[]
-          for(let i in this.data.complete_list){
-                complete_name.push(this.data.complete_list[i].name)
-          }
-          const all=res.data
-          for (let i in all){
-              if(complete_name.indexOf(all[i].id)==-1){
-                  uncomplete_name.push(all[i].id)
-              }
-          }
-          this.setData({
-            uncomplete_list:uncomplete_name
-          })
-        })
       }
+      //   const db = wx.cloud.database()
+      //   db.collection('account_information').where({
+      //     identity:"student"
+      //   }).get().then(res=>{
+      //     var complete_name=[]
+      //     var uncomplete_name=[]
+      //     for(let i in this.data.complete_list){
+      //           complete_name.push(this.data.complete_list[i].name)
+      //     }
+      //     const all=res.data
+      //     for (let i in all){
+      //         if(complete_name.indexOf(all[i].id)==-1){
+      //             uncomplete_name.push(all[i].id)
+      //         }
+      //     }
+      //     this.setData({
+      //       uncomplete_list:uncomplete_name
+      //     })
+      //   })
+      // }
     })
   },
   t_mark: function(e) {

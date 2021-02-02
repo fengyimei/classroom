@@ -4,7 +4,41 @@ Page({
   data: {
     tasks: [],
     currentindex:-1,
-    identity:''
+    identity:'',
+    selectArray: [
+      {id: '1', text: '一班'},
+      {id: '2', text: '二班'},
+      {id: '3', text: '三班'}
+    ],
+    currentclass:0
+  },
+  getdata:function(e)
+  {
+    console.log(e)
+    this.setData({
+      currentclass:e.detail.id
+    })
+    const db = wx.cloud.database()
+    var homeworklist=""
+    if(this.data.currentclass==0){
+      homeworklist='assignment'
+    }
+    else if(this.data.currentclass==1){
+      homeworklist='assignment2'
+    }
+    else 
+      homeworklist='assignment3'
+    db.collection(homeworklist).get().then(res => { console.log(res.data) 
+      this.setData({
+          tasks:res.data
+      })
+    }).catch(res=>{
+      console.log(res)
+      wx.showToast({
+        title: "获取作业失败",
+        icon:"none"
+      })
+    })
   },
   //事件处理函数
   onLoad: function(){
@@ -20,7 +54,16 @@ Page({
       })
     }
     const db = wx.cloud.database()
-    db.collection('assignment').get().then(res => { console.log(res.data) 
+    var homeworklist=""
+    if(this.data.currentclass==0){
+      homeworklist='assignment'
+    }
+    else if(this.data.currentclass==1){
+      homeworklist='assignment2'
+    }
+    else 
+      homeworklist='assignment3'
+    db.collection(homeworklist).get().then(res => { console.log(res.data) 
       this.setData({
           tasks:res.data
       })

@@ -5,7 +5,27 @@ Page({
           account:"",
           password:"",
           passwordagain:"",
-          phonenumber:""
+          phonenumber:"",
+          kind:"",
+          kindtrue:false,
+          code:''
+  },
+   
+  invitationchange:function(e){
+       this.setData({
+          code:e.detail.value
+       })
+  },
+
+  changekind:function(e){
+    var temp=false
+    if(e.detail.value=='1'){
+      temp=true
+    }
+    this.setData({
+      kind: e.detail.value,
+      kindtrue: temp
+    })
   },
 
   accountchange:function(e){
@@ -45,23 +65,39 @@ Page({
         icon:'none'
       })
     }
+    else if(this.data.kind==""){
+      wx.showToast({
+        title: '未选择账号类型',
+        icon:'none'
+      })
+    }
+    else if(this.data.kind=="1" && this.data.code==""){
+      wx.showToast({
+        title: '未输入邀请码',
+        icon:'none'
+      })
+    }
     else{
       const db=wx.cloud.database()
       const cont = db.collection('account_information')
       var curid=this.data.account
       var curpass=this.data.password
       var curphone=this.data.phonenumber
+      var curkind=this.data.kind
+      var curcode=this.data.code
       cont.where({
         id: curid,
       }).get().then(res=>{
         if(res.data.length!=0){
           wx.showToast({
-            title: '该用户已注册',
+            title: '该用户名已注册',
             icon:'none'
           })
         }
         else{
-          cont.add({
+         if(curkind=="0")
+          {
+            cont.add({
             data:{
               id: curid,
               password: curpass,
@@ -69,44 +105,71 @@ Page({
               identity:'student'
             }
           }).then(res2=>{
-            const con2=db.collection('contact')
-            con2.where({
-              teacher:'fzy'
-            }).get().then(res3=>{
-              var temp=res3.data[0].student.slice()
-              temp.push({msg:[] , name:curid })
-              db.collection('contact').where({
-                teacher:'fzy'
-              }).update({
-                data:{
-                  student:temp
-                }
-              }).then(res4=>{
-                wx.showToast({
-                  title: '注册成功',
-                })
-                setTimeout(function(){
-                  wx.navigateBack({
-                    delta:1
-                  })},2000)
-              }).catch(res5=>{
-                wx.showToast({
-                  title: '注册失败',
-                  icon:'none'
-                })
-              })
-              }).catch(res3=>{
-                wx.showToast({
-                  title: '注册失败',
-                  icon:'none'
-                })
-              })
-            }).catch(res2=>{
               wx.showToast({
-                title: '注册失败',
-                icon:'none'
+                title: '注册成功',
+              })
+              setTimeout(function(){
+                wx.navigateBack({
+                  delta:1
+                })},2000)
+            }).catch(res5=>{
+                wx.showToast({
+                  title: '注册失败',
+                  icon:'none'
               })
             })
+          }
+            else{
+               const cont2 = db.collection('invite')
+               cont2.get().then(res2=>{
+                    console.log(res2)
+               })
+               console.log(curcode)
+               cont2.where({
+                 code:curcode
+               }).get().then(res11=>{
+                    console.log(res11)
+                    if(res11.data.length==0){
+                      wx.showToast({
+                        title: '邀请码错误',
+                        icon:'none'
+                      })
+                    }
+                    else{
+                      if(res11.data[0].is_Occupied){
+                        wx.showToast({
+                          title: '邀请码被占用',
+                          icon:'none'
+                        })
+                      }
+                      else{
+                        cont2.where({
+                          code:curcode
+                        }).update({
+                          data:{
+                            is_Occupied: true
+                          }
+                        })
+                        cont.add({
+                          data:{
+                            id: curid,
+                            password: curpass,
+                            phonenumber: curphone,
+                            identity:'teacher'
+                          }
+                        }).then(res2=>{
+                            wx.showToast({
+                              title: '注册成功',
+                            })
+                            setTimeout(function(){
+                              wx.navigateBack({
+                                delta:1
+                              })},2000)
+                          })
+                      }
+                    }
+               })
+            }
         }
       }).catch(res=>{
         wx.showToast({

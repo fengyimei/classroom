@@ -1,4 +1,5 @@
 <!--t_tasks.wxml-->
+<select  prop-array="{{selectArray}}" bind:myget="getdata"></select>
 <view wx:if="{{identity}}">
   <view class="tasks-list">
     <block wx:for="{{tasks}}" wx:for-item="task">
